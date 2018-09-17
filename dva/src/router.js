@@ -1,14 +1,17 @@
 import React from 'react';
-import { Router, Route, Switch } from 'dva/router';
-import IndexPage from './routes/IndexPage';
+import { Router, Switch, Route, Redirect } from 'dva/router';
+import InputData from "./components/InputData";
 
 function RouterConfig({ history }) {
   return (
     <Router history={history}>
-      <Switch>
-        <Route path="/" exact component={IndexPage} />
-      </Switch>
-    </Router>
+    <Switch>
+    <Route path="/basicInput" component={InputData} />
+    <Route path="/detailInput" component={InputData} />
+      <Redirect to="/basicInput" />
+    </Switch>
+    </Router >
+
   );
 }
 
