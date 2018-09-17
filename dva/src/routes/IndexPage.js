@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'dva';
 import IndexComponent from '../components/IndexComponent';
-import 'antd/dist/antd.css';
 
  class IndexPage  extends React.Component {
    constructor(props){

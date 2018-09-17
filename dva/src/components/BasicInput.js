@@ -10,6 +10,9 @@ import React from 'react';
 export default class BasicInput  extends React.Component {
   constructor(props) {
     super(props);
+    this.state={
+
+    };
   }
 
   componentDidMount() {

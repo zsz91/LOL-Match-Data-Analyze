@@ -12,10 +12,6 @@ import DetailInput from './DetailInput';
  *
  */
 export default class InputData  extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
   };
 
