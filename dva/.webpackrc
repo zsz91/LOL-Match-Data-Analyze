@@ -1,0 +1,22 @@
+{
+	"extraBabelPlugins": [
+		["import", {
+			"libraryName": "antd",
+			"libraryDirectory": "es",
+			"style": true
+		}]
+	],
+	"proxy": {
+		"/": {
+			"target": "http://127.0.0.1/LOL/thinkphp",
+			"changeOrigin": true
+		}
+	},
+	"env": {
+		"development": {
+			"extraBabelPlugins": [
+				"dva-hmr"
+			]
+		}
+	}
+}
