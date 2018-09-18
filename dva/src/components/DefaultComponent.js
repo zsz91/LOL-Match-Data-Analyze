@@ -12,6 +12,9 @@ import IndexComponent from './IndexComponent';
 export default class DefaultComponent  extends React.Component {
   constructor(props) {
     super(props);
+    this.state={
+
+    };
   }
 
   componentDidMount() {
@@ -19,6 +22,12 @@ export default class DefaultComponent  extends React.Component {
 
   shouldComponentUpdate(nextProps,nextState){
     return true;
+  };
+
+  stateChange = (key,value) => {
+    this.setState({
+      [key]:value
+    });
   };
 
   render() {

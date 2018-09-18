@@ -8,11 +8,28 @@ import {Col, Row} from "antd";
 import IndexComponent from "./IndexComponent";
 import BasicInput from './BasicInput';
 import DetailInput from './DetailInput';
+import * as service from '../services/example';
+
 /**
  *
  */
 export default class InputData  extends React.Component {
+
+  constructor(props){
+    super(props);
+    this.state = {
+      matchList:[],
+    };
+  }
+
+
   componentDidMount() {
+    service.matchList().then((res)=>{
+        this.setState({
+          matchList:res.data,
+        });
+      }
+    );
   };
 
   shouldComponentUpdate(nextProps,nextState){
@@ -20,13 +37,13 @@ export default class InputData  extends React.Component {
   };
 
   render() {
-    let Content = <BasicInput/>;
+    let Content;
     switch(this.props.location.pathname){
       case '/basicInput':
-        Content = <BasicInput/>;
+        Content = <BasicInput {...this.state} service={service}/>;
         break;
       case '/detailInput':
-        Content = <DetailInput/>;
+        Content = <DetailInput {...this.state} service={service}/>;
         break;
       default:
         break;
@@ -36,8 +53,8 @@ export default class InputData  extends React.Component {
         <Col span={4} style={{ height: '100%' }}>
           <IndexComponent route={this.props.location.pathname} />
         </Col>
-        <Col span={20}>
-          {Content}
+        <Col span={20} style={{height:'100%'}}>
+          {this.state.matchList.length ? Content : null}
         </Col>
       </Row>);
   }

@@ -1,8 +1,49 @@
 <?php
 namespace Home\Controller;
 use Think\Controller;
+
+header("Access-Control-Allow-Origin:*");
+header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
+header('Access-Control-Allow-Headers: Authorization');
 class IndexController extends Controller {
+	private $match_list;
+	private $team_list;
+    public function __construct(){
+    	$this->team_list = M('team_list');
+    	$this->match_list = M('match_list') -> select();
+    }
+
     public function index(){
-        $this->show('<style type="text/css">*{ padding: 0; margin: 0; } div{ padding: 4px 48px;} body{ background: #fff; font-family: "微软雅黑"; color: #333;font-size:24px} h1{ font-size: 100px; font-weight: normal; margin-bottom: 12px; } p{ line-height: 1.8em; font-size: 36px } a,a:hover{color:blue;}</style><div style="padding: 24px 48px;"> <h1>:)</h1><p>欢迎使用 <b>ThinkPHP</b>！</p><br/>版本 V{$Think.version}</div><script type="text/javascript" src="http://ad.topthink.com/Public/static/client.js"></script><thinkad id="ad_55e75dfae343f5a1"></thinkad><script type="text/javascript" src="http://tajs.qq.com/stats?sId=9347272" charset="UTF-8"></script>','utf-8');
+    }
+   	
+   	/*获取所有的赛事列表*/
+    public function getMatchList(){	
+        $this-> returnRes($this->match_list);
+    }
+
+    /*根据一个赛事id 获取这个赛事所有的战队id和名称 和赛制的BO几情况和name*/
+    public function getMatchTeamByMatchId(){
+    	$matchId = $_GET['matchId'];
+    	$match_team = M('match_team') -> where(array('match_id'=>$matchId))->order('team_area asc')->getField('team_id',true);
+    	$whete['id'] = array('in',$match_team);
+    	$res_team = M('team_list')->where($where)->select();
+    	$other = M('match_type') -> where(array('match_id'=>$matchId)) ->order('id asc') ->select();
+    	$this->returnRes($res_team, $other);
+    }
+
+    private function returnRes($data,$otherData = ''){
+    	$res = array(
+    		'code' => 200,
+    		'data' => $data,
+    		'other' => $otherData,
+    	);
+    	$res = json_encode($res,JSON_UNESCAPED_UNICODE);
+    	print_r($res);
+    }
+
+    private function debug($data){
+    	echo '<pre>';
+    	print_r($data);
+    	die;
     }
 }

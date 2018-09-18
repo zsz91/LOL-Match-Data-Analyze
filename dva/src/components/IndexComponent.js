@@ -13,10 +13,6 @@ const SubMenu = Menu.SubMenu;
  */
 export default class IndexComponent  extends React.Component {
 
-  constructor(props){
-    super(props);
-    console.log(props);
-  }
   componentDidMount() {
   };
 
