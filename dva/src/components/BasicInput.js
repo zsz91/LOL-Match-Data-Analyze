@@ -4,12 +4,8 @@
  *
  */
 import React from 'react';
-import {Col, Row, Select, Form, DatePicker} from "antd";
-import moment from 'moment';
-
-const FormItem = Form.Item;
-const Option = Select.Option;
-const dateFormat = 'YYYY-MM-DD';
+import {Col, Row, Form, Button, message} from "antd";
+import FormItemDiy from '../../public/components/FormItemDiy';
 /**
  *
  */
@@ -17,13 +13,17 @@ export default class BasicInput  extends React.Component {
   constructor(props) {
     super(props);
     this.state={
-      matchId: "1",
-      teamList: [],
-      teamA: '1',
-      teamB: '2',
-      gameDate:null,
-      boList: [],
-      boType: '1',
+      matchId: "1", // 赛事id
+      teamList: [], // 赛事战队列表
+      teamWin: '1', // 获胜方战队id
+      teamLose: '2', // 失败方战队id
+      gameDate:null, // 比赛日期
+      boList: [], // 赛事阶段列表.
+      boType: '1', // 赛事阶段id
+      netScore: '1', // 净胜分数 >= 1
+      totalScore: '2', // 总局数 >= 1
+      processList: [], //赛事进程list
+      process: null, // 赛事进程id
     };
     this.getTeamListOfOneMatch();
   }
@@ -41,11 +41,35 @@ export default class BasicInput  extends React.Component {
     });
   };
 
+  handleNetScoreChange = (key,value) => {
+    let bo_number = this.getBoNumber();
+    let totalScore = Math.ceil(bo_number/2);
+    if(value === 1){
+      totalScore = bo_number;
+    }else if(value < totalScore){
+      totalScore++;
+    }
+    let newState = {
+      totalScore:totalScore,
+      netScore: value,
+      process: "",
+    };
+    for(let item of this.state.processList){
+      if(parseInt(item.total, 10) === parseInt(totalScore, 10) && parseInt(bo_number, 10) === parseInt(item.bo_number, 10)){
+        newState.process = item.id + "";
+        break;
+      }
+    }
+    this.setState(newState);
+  };
+
+
   getTeamListOfOneMatch = () => {
     this.props.service.teamListOfOneMatch(this.state.matchId).then((res)=>{
       this.setState({
         teamList: res.data,
-        boList: res.other,
+        boList: res.other.match_type,
+        processList:res.other.process_list,
       });
     })
   };
@@ -59,73 +83,178 @@ export default class BasicInput  extends React.Component {
 
   };
 
+  submitData = () => {
+    let data = {
+      match: this.state.matchId,
+      date: this.state.gameDate,
+      win: this.state.teamWin,
+      lose: this.state.teamLose,
+      net_score: this.state.netScore,
+      type: this.state.boType,
+      total_score: this.state.totalScore,
+      process: this.state.process,
+    };
+    for(let item in data){
+      if(!data[item]){
+        message.error(`所有值都必须填写不能为空`);
+        return false;
+      }
+    }
+    this.props.service.postGameList(data).then((response)=>{
+      message.info(response.data);
+      if(response.code === 200){
+
+      }
+    });
+    return data;
+  };
+
+  /*赛事的Bo_number 是3,5 或者1*/
+
+  getBoNumber = () => {
+    let bo_number = 1;
+    for(let item2 of this.state.boList){
+      if(item2.id === this.state.boType){
+        bo_number = item2.bo_number;
+      }
+    }
+    return bo_number;
+  };
+
+
+  /*总局数的枚举*/
+  totalScoreList = () => {
+    let bo_number = this.getBoNumber();
+    let minNumber = Math.ceil(bo_number/2);
+    let res = [];
+    for(let i = minNumber; i <= bo_number; i++){
+      res.push({ id: i});
+    }
+    return res;
+  };
+
+  /*净胜分的枚举*/
+  netScoreList = () => {
+    let bo_number = this.getBoNumber();
+    let minNumber = Math.ceil(bo_number/2);
+    let res = [];
+    for(let i = 1; i <= minNumber; i++){
+      res.push({ id: i});
+    }
+
+    return res;
+  };
+
+  /*比赛过程的枚举值*/
+  boProcessList = () => {
+    let bo_number = this.getBoNumber();
+    let res = [];
+    for(let item of this.state.processList){
+      if(parseInt(bo_number, 10) === parseInt(item.bo_number, 10) && parseInt(this.state.totalScore, 10) === parseInt(item.total,10) ){
+        res.push( {id: item.id, name: item.process});
+      }
+    }
+   return res;
+  };
+
   render() {
+
+    if(!this.state.teamList.length){
+      return null;
+    }
+
+    let config = [
+      {
+        label: '选择赛事',
+        handleChange: this.handleMatchIdChange,
+        value: this.state.matchId,
+        options: this.props.matchList,
+        optionKey: 'id',
+        optionName: 'name',
+        type: 'Select',
+        keyName: 'matchId',
+      },
+      {
+        label: '赛事阶段',
+        handleChange: this.stateChange,
+        value: this.state.boType,
+        options: this.state.boList,
+        optionKey: 'id',
+        optionName: 'name',
+        type: 'Select',
+        keyName: 'boType',
+      },
+      {
+        label: '对战日期',
+        handleChange: this.stateChange,
+        value: this.state.gameDate,
+        type: 'DatePicker',
+        keyName: 'gameDate',
+      },
+      {
+        label: '获胜方',
+        handleChange: this.stateChange,
+        value: this.state.teamWin,
+        options: this.state.teamList,
+        optionKey: 'id',
+        optionName: 'name',
+        type: 'Select',
+        keyName: 'teamWin',
+      },
+      {
+        label: '失败方',
+        handleChange: this.stateChange,
+        value: this.state.teamLose,
+        options: this.state.teamList,
+        optionKey: 'id',
+        optionName: 'name',
+        type: 'Select',
+        keyName: 'teamLose',
+      },
+      {
+        label: '净胜分数',
+        handleChange: this.handleNetScoreChange,
+        value:this.state.netScore,
+        options: this.netScoreList(),
+        optionKey: 'id',
+        optionName: 'id',
+        type: 'Select',
+        keyName: 'netScore',
+      },
+      {
+        label: '总局数',
+        handleChange: this.stateChange,
+        value:this.state.totalScore,
+        options: this.totalScoreList(),
+        optionKey: 'id',
+        optionName: 'id',
+        type: 'Select',
+        keyName: 'totalScore',
+      },
+      {
+        label: '比赛过程',
+        handleChange: this.stateChange,
+        value:this.state.process,
+        options: this.boProcessList(),
+        optionKey: 'id',
+        optionName: 'name',
+        type: 'Select',
+        keyName: 'process',
+      },
+    ];
+
     return (
       <Row>
         <Col span={24}><h2>一场比赛的基本数据录入</h2></Col>
         <Row>
           <Form layout="inline">
-            <FormItem
-              label="选择赛事"
-            >
-              <Select style={{width:'100%'}}
-                      onChange={(value)=>{this.handleMatchIdChange('matchId', value)}}
-                      value = {this.state.matchId}
-              >
-                {this.props.matchList.map((item) => {
-                  return <Option value={item.id} key={item.id}>{item.name}</Option>
-                })}
-              </Select>
-            </FormItem>
-            <FormItem
-              label="对战日期"
-            >
-              <DatePicker
-                value={this.state.gameDate ? moment(this.state.gameDate, dateFormat) : null }
-                format={'YYYY-MM-DD'}
-                onChange = {(date,dateString) => {this.stateChange('gameDate',dateString)}}
-              />
-            </FormItem>
-            <FormItem
-              label="选择战队A"
-            >
-              <Select style={{width:'120px'}}
-                      onChange={(value)=>{this.stateChange('teamA', value)}}
-                      value = {this.state.teamA}
-              >
-                {this.state.teamList.map((item) => {
-                  return <Option value={item.id} key={item.id}>{item.name}</Option>
-                })}
-              </Select>
-            </FormItem>
-            <FormItem
-              label="选择战队B"
-            >
-              <Select style={{width:'120px'}}
-                      onChange={(value)=>{this.stateChange('teamB', value)}}
-                      value = {this.state.teamB}
-              >
-                {this.state.teamList.map((item) => {
-                  return <Option value={item.id} key={item.id}>{item.name}</Option>
-                })}
-              </Select>
-            </FormItem>
-            <FormItem
-              label="BO_TYPE"
-            >
-              <Select style={{width:'120px'}}
-                      onChange={(value)=>{this.stateChange('boType', value)}}
-                      value = {this.state.boType}
-              >
-                {this.state.boList.map((item) => {
-                  return <Option value={item.id}
-                                 key={item.id}>
-                            {item.name}
-                          </Option>
-                })}
-              </Select>
-            </FormItem>
+            {config.map((item,index)=>{
+              return <FormItemDiy  key={item.keyName} {...item}/>
+            })}
           </Form>
+        </Row>
+        <Row>
+          <Button onClick={()=>{this.submitData()}}>提交</Button>
         </Row>
       </Row>
 

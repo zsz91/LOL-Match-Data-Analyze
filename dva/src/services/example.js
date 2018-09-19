@@ -15,3 +15,13 @@ export function teamListOfOneMatch(matchId) {
     method: 'get',
   });
 }
+
+export function postGameList(data){
+  return request(`/index.php?m=Home&c=Index&a=postGameList`, {
+    method: 'post',
+    body: JSON.stringify(data),
+    headers: {
+      'Content-Type': 'application/json;charset=UTF-8'
+    },
+  });
+}
