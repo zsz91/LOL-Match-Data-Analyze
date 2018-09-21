@@ -21,8 +21,9 @@ class BasicAnalyzeController extends BasicController{
     public function getBasicAnalyze(){
         $matchId = $_GET['matchId'];
         $update = $_GET['update'] || true;
-       // $this->totalScore($matchId);
-        $this->someContinue($matchId);
+        $res['占比'] = $this->totalScore($matchId);
+        $res['走势'] = $this->someContinue($matchId);
+        $this->debug($res);
 
     }
     /*根据一个赛事id  
@@ -39,12 +40,15 @@ class BasicAnalyzeController extends BasicController{
             $where['match'] = $id;
             $where['type'] = $types[$i]['id'];
             $where['total_score'] = array('GT',1);
+            $totalGame = $this->M->where($where)->count();
             $rx = $this->M->where($where)->field(array("count(total_score)"=>"count",'total_score'))->group('total_score')->select();
             $res[$i] = array(
                 'name'=> $types[$i]['name'],
                 '大小局统计'=> $rx,
+                'total'=>$totalGame,
             );
         }
+        return $res;
     }
     /**
     *根据一个赛事的id
@@ -70,11 +74,11 @@ class BasicAnalyzeController extends BasicController{
             }
           
         }
+        return $res;
         /*print_r(substr_count($res,'1010')); 5个0
         print_r(substr_count($res,'10101'));
         print_r(substr_count($res,'10100'));
         die;*/
-        $this->debug($res);
 
     }
     

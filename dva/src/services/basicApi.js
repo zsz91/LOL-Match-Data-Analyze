@@ -17,6 +17,13 @@ export function teamListOfOneMatch(matchId) {
   });
 }
 
+export function getListOfOneMatch(matchId,page){
+  return request(`${basicRoute}/index.php?m=Home&c=Index&a=getGameList&matchId=${matchId}&page=${page}`,{
+    method: 'get',
+  });
+}
+
+
 export function postGameList(data){
   return request(`${basicRoute}/index.php?m=Home&c=Index&a=postGameList`, {
     method: 'post',

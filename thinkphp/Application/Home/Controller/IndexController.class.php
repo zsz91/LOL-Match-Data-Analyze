@@ -28,6 +28,26 @@ class IndexController extends BasicController{
     	);
     	$this->returnRes($res_team, $other);
     }
+    /*获取一个赛事的列表数据*/
+    public function getGameList(){
+    	$matchId = $_GET['matchId'];
+    	$page = $_GET['page'];
+    	$matchTeam = M('match_team')->where(array('match_id'=>$matchId))->getField('team_id',true);
+    	$where['id'] = array('in',$matchTeam);
+    	$teamName = M('team_list')->where($where)->getField('id,name',true);
+    	$process_list = M('process_list')->getField('id,score',true);
+    	$page--; //page 从0开始算
+    	$count = M('game_list')->where(array('match'=>$matchId))->count();
+    	$data = M('game_list')->where(array('match'=>$matchId))->limit($page*10,10)->order(array('date'=>'desc','id'=>'desc'))->field('win,date,lose,id,total_score,process')->select();
+    	foreach ($data as $key => &$value) {
+    		$value['win'] = $teamName[$value['win']];
+    		$value['lose'] = $teamName[$value['lose']];
+    		$value['process'] = $process_list[$value['process']];
+    		$value['key'] = $value['id'];
+    	}
+    	unset($value);
+    	$this->returnRes($data,array('count'=>$count));
+    }
 
     public function postGameList(){
     	$input = file_get_contents('php://input');

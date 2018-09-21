@@ -9,7 +9,7 @@ header('Access-Control-Allow-Headers: Authorization');
 class BasicController extends Controller {
 	public $match_list;
 	public function __construct(){
-    	$this->match_list = M('match_list') -> select();
+    	$this->match_list = M('match_list')->order('name desc')->select();
     }
     protected function returnRes($data, $otherData = '', $code = 200){
     	$res = array(

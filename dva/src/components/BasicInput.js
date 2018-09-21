@@ -4,8 +4,10 @@
  *
  */
 import React from 'react';
-import {Col, Row, Form, Button, message} from "antd";
+import {Col, Row, Form, Button, message, Table} from "antd";
 import FormItemDiy from '../../public/components/FormItemDiy';
+import '../styles/bsicinput.less';
+
 /**
  *
  */
@@ -24,8 +26,13 @@ export default class BasicInput  extends React.Component {
       totalScore: '2', // 总局数 >= 1
       processList: [], //赛事进程list
       process: null, // 赛事进程id
+      gameList: {
+        data: [],
+        count: 0,
+      },
     };
     this.getTeamListOfOneMatch();
+    this.getGameListOfOneMatch();
   }
 
   componentDidMount() {
@@ -73,16 +80,28 @@ export default class BasicInput  extends React.Component {
       });
     })
   };
-
+  getGameListOfOneMatch = (page = 1) => {
+    this.props.service.getListOfOneMatch(this.state.matchId,page).then((res)=>{
+      this.setState({
+        gameList:{
+          data: res.data,
+          count: res.other.count,
+        },
+      });
+    })
+  };
+  /*赛事更改*/
   handleMatchIdChange = (key, value) => {
       this.setState({
         [key]: value,
       },() => {
         this.getTeamListOfOneMatch();
+        this.getGameListOfOneMatch();
       });
 
   };
 
+  /*提交数据*/
   submitData = () => {
     let data = {
       match: this.state.matchId,
@@ -109,8 +128,8 @@ export default class BasicInput  extends React.Component {
     return data;
   };
 
-  /*赛事的Bo_number 是3,5 或者1*/
 
+  /*赛事的Bo_number 是3,5 或者1*/
   getBoNumber = () => {
     let bo_number = 1;
     for(let item2 of this.state.boList){
@@ -163,7 +182,7 @@ export default class BasicInput  extends React.Component {
       return null;
     }
 
-    let config = [
+    const config = [
       {
         label: '选择赛事',
         handleChange: this.handleMatchIdChange,
@@ -242,7 +261,29 @@ export default class BasicInput  extends React.Component {
         keyName: 'process',
       },
     ];
+    const columns = [{
+      title: '获胜方',
+      dataIndex: 'win',
+      key: 'win',
+      width:60,
+    },{
+      title: '失败方',
+      dataIndex: 'lose',
+      key: 'lose',
+      width:60,
 
+    },{
+      title: '日期',
+      dataIndex: 'date',
+      key: 'date',
+      width:120,
+
+    },{
+      title: '比分',
+      dataIndex: 'process',
+      key: 'process',
+      width:40,
+    }];
     return (
       <Row>
         <Col span={24}><h2>一场比赛的基本数据录入</h2></Col>
@@ -257,7 +298,7 @@ export default class BasicInput  extends React.Component {
         <Row>
           获胜方:<br/>
           {this.state.teamList.map((item)=>{
-            return <Col span={4}
+            return <Col span={1}
                         key={item.id}>
                 <Button onClick={()=>{this.stateChange('teamWin', item.id)}}
                         style={this.state.teamWin === item.id ? {color:'red'}: null}>
@@ -269,7 +310,7 @@ export default class BasicInput  extends React.Component {
         <Row>
           失败方<br/>
           {this.state.teamList.map((item)=>{
-            return <Col span={4}
+            return <Col span={1}
                         key={item.id}
 
             >
@@ -280,8 +321,27 @@ export default class BasicInput  extends React.Component {
             </Col>
           })}
         </Row>
-        <br/><br/>
+        <br/>
         <Button onClick={()=>{this.submitData()}}>提交</Button>
+
+        <Row style={{ height: "600px", overflowY: "auto",width: "400px", }}>
+          <Table columns={columns}
+                 dataSource={this.state.gameList.data}
+                 rowKey='key'
+                 bordered
+                 scroll={{y: 450}}
+                 pagination={
+                   {
+                     total:parseInt(this.state.gameList.count, 10),
+                     onChange: (page,pageSize)=>{this.getGameListOfOneMatch(page)},
+                     pageSize: 10,
+                   }
+                 }
+          >
+
+          </Table>
+        </Row>
+
       </Row>
 
     );
