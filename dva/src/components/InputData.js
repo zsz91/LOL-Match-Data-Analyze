@@ -8,7 +8,8 @@ import {Col, Row} from "antd";
 import IndexComponent from "./IndexComponent";
 import BasicInput from './BasicInput';
 import DetailInput from './DetailInput';
-import * as service from '../services/example';
+import BasicAnalyze from './BasicAnalyze';
+import * as service from '../services/basicApi';
 
 /**
  *
@@ -44,6 +45,9 @@ export default class InputData  extends React.Component {
         break;
       case '/detailInput':
         Content = <DetailInput {...this.state} service={service}/>;
+        break;
+      case '/basicAnalyze':
+        Content = <BasicAnalyze {...this.state} service={service}/>;
         break;
       default:
         break;

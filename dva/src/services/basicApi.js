@@ -1,23 +1,24 @@
 import request from '../utils/request';
+const basicRoute = '/thinkphp' ;
 
 export function query() {
-  return request('/api/users');
+  return request( basicRoute + '/api/users');
 }
 
 export function matchList() {
-  return request(`/index.php?m=Home&c=Index&a=getMatchList`, {
+  return request(`${basicRoute}/index.php?m=Home&c=Index&a=getMatchList`, {
     method: 'get',
   });
 }
 
 export function teamListOfOneMatch(matchId) {
-  return request(`/index.php?m=Home&c=Index&a=getMatchTeamByMatchId&matchId=${matchId}`, {
+  return request(`${basicRoute}/index.php?m=Home&c=Index&a=getMatchTeamByMatchId&matchId=${matchId}`, {
     method: 'get',
   });
 }
 
 export function postGameList(data){
-  return request(`/index.php?m=Home&c=Index&a=postGameList`, {
+  return request(`${basicRoute}/index.php?m=Home&c=Index&a=postGameList`, {
     method: 'post',
     body: JSON.stringify(data),
     headers: {

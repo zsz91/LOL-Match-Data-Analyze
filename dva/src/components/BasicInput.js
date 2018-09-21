@@ -252,10 +252,36 @@ export default class BasicInput  extends React.Component {
               return <FormItemDiy  key={item.keyName} {...item}/>
             })}
           </Form>
+
         </Row>
         <Row>
-          <Button onClick={()=>{this.submitData()}}>提交</Button>
+          获胜方:<br/>
+          {this.state.teamList.map((item)=>{
+            return <Col span={4}
+                        key={item.id}>
+                <Button onClick={()=>{this.stateChange('teamWin', item.id)}}
+                        style={this.state.teamWin === item.id ? {color:'red'}: null}>
+                {item.name}
+                </Button>
+                 </Col>
+          })}
         </Row>
+        <Row>
+          失败方<br/>
+          {this.state.teamList.map((item)=>{
+            return <Col span={4}
+                        key={item.id}
+
+            >
+              <Button onClick={()=>{this.stateChange('teamLose', item.id)}}
+                      style={this.state.teamLose === item.id ? {color:'red'}: null}>
+                {item.name}
+              </Button>
+            </Col>
+          })}
+        </Row>
+        <br/><br/>
+        <Button onClick={()=>{this.submitData()}}>提交</Button>
       </Row>
 
     );

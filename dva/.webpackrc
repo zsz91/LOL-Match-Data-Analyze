@@ -8,7 +8,7 @@
 	],
 	"proxy": {
 		"/": {
-			"target": "http://127.0.0.1/LOL/thinkphp",
+			"target": "http://127.0.0.3/",
 			"changeOrigin": true
 		}
 	},

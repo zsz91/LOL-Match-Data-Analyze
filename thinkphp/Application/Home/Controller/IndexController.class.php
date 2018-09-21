@@ -2,18 +2,13 @@
 namespace Home\Controller;
 use Think\Controller;
 
-header("Access-Control-Allow-Origin:*");
-header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
-header('Access-Control-Allow-Headers: Authorization');
-class IndexController extends Controller {
-	private $match_list;
+class IndexController extends BasicController{
+	
     public function __construct(){
-    	$this->match_list = M('match_list') -> select();
+    	parent::__construct();
     }
-
     public function index(){
     }
-   	
    	/*获取所有的赛事列表*/
     public function getMatchList(){
         $this->returnRes($this->match_list);
@@ -23,8 +18,8 @@ class IndexController extends Controller {
     public function getMatchTeamByMatchId(){
     	$matchId = $_GET['matchId'];
     	$match_team = M('match_team') -> where(array('match_id'=>$matchId))->order('team_area asc')->getField('team_id',true);
-    	$whete['id'] = array('in',$match_team);
-    	$res_team = M('team_list')-> where($where)->select();
+    	$where['id'] = array('in',$match_team);
+    	$res_team = M('team_list')-> where($where)->order('name asc')->select();
     	$other = M('match_type')-> where(array('match_id'=>$matchId))-> order('id asc')-> select();
     	$process_list = M('process_list')-> order('id asc') ->select();
     	$other = array(
@@ -54,19 +49,5 @@ class IndexController extends Controller {
 		}
     }
 
-    private function returnRes($data, $otherData = '', $code = 200){
-    	$res = array(
-    		'code' => $code,
-    		'data' => $data,
-    		'other' => $otherData,
-    	);
-    	$res = json_encode($res,JSON_UNESCAPED_UNICODE);
-    	print_r($res);
-    }
-
-    private function debug($data){
-    	echo '<pre>';
-    	print_r($data);
-    	die;
-    }
+    
 }
