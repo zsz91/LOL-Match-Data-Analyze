@@ -1,0 +1,21 @@
+[ 2018-09-25T14:18:05+08:00 ] 127.0.0.1 /thinkphp/index.php?m=Home&c=BasicAnalyze&a=getBasicAnalyze&matchId=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `match_list` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `match_list` ORDER BY name desc  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `game_list` [ RunTime:0.0010s ]
+NOTIC: [8] Undefined index: update C:\xampp\htdocs\LOL\thinkphp\Application\Home\Controller\BasicAnalyzeController.class.php 第 23 行.
+SQL: SHOW COLUMNS FROM `match_type` [ RunTime:0.0010s ]
+SQL: SELECT `name`,`id` FROM `match_type` WHERE `match_id` = 1 AND `bo_number` > 1 ORDER BY id  [ RunTime:0.0010s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `game_list` WHERE `match` = 1 AND `type` = 1 AND `total_score` > 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT count(total_score) AS `count`,`total_score` FROM `game_list` WHERE `match` = 1 AND `type` = 1 AND `total_score` > 1 GROUP BY total_score  [ RunTime:0.0020s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `game_list` WHERE `match` = 1 AND `type` = 2 AND `total_score` > 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT count(total_score) AS `count`,`total_score` FROM `game_list` WHERE `match` = 1 AND `type` = 2 AND `total_score` > 1 GROUP BY total_score  [ RunTime:0.0020s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `game_list` WHERE `match` = 1 AND `type` = 3 AND `total_score` > 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT count(total_score) AS `count`,`total_score` FROM `game_list` WHERE `match` = 1 AND `type` = 3 AND `total_score` > 1 GROUP BY total_score  [ RunTime:0.0020s ]
+SQL: SELECT `date`,`total_score` FROM `game_list` WHERE `match` = 1 AND `total_score` IN (2,3) AND `process` IN (1,2,3) ORDER BY id,date asc  [ RunTime:0.0020s ]
+
