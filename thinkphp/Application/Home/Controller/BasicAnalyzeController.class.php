@@ -12,6 +12,33 @@ class BasicAnalyzeController extends BasicController{
     public function index(){
     }
 
+    /*根据赛事id和赛事阶段返回排名*/
+    public function getTeamRank(){
+         $where['match'] = $_GET['matchId'];
+         $where['type'] = $_GET['boType'];
+         $data = $this->M->where($where)->select();
+         $res = [];
+         foreach ($data as $key => $value) {
+            if(empty( $res[$value['win']])){
+               $res[$value['win']] = array(
+                    'win' =>0,
+                    'lose'=>0,
+               );
+            }
+            if(empty($res[$value['lose']])){
+               $res[$value['lose']] = array(
+                    'win' =>0,
+                    'lose'=>0,
+               );
+            }
+            $res[$value['win']]['win']++;
+            $res[$value['lose']]['lose']++;
+        }
+        
+        $this->returnRes($res);   
+    }
+
+
     /*根据一个或多个赛事id 返回这些赛事的一系列数据*/
     /**
       matchId 赛事id 

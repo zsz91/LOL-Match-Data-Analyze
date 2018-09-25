@@ -23,6 +23,13 @@ export function getListOfOneMatch(matchId,page){
   });
 }
 
+/*根据赛事id 和赛事阶段 返回胜负排名*/
+export function getTeamRank(matchId,boType){
+  return request(`${basicRoute}/index.php?m=Home&c=BasicAnalyze&a=getTeamRank&matchId=${matchId}&boType=${boType}`,{
+    method: 'get',
+  });
+}
+
 
 export function postGameList(data){
   return request(`${basicRoute}/index.php?m=Home&c=Index&a=postGameList`, {

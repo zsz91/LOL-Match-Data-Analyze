@@ -324,12 +324,12 @@ export default class BasicInput  extends React.Component {
         <br/>
         <Button onClick={()=>{this.submitData()}}>提交</Button>
 
-        <Row style={{ height: "600px", overflowY: "auto",width: "400px", }}>
+        <Row style={{ height: "400px", overflowY: "auto",width: "600px", }}>
           <Table columns={columns}
                  dataSource={this.state.gameList.data}
                  rowKey='key'
                  bordered
-                 scroll={{y: 450}}
+                 //scroll={{y: 350}}
                  pagination={
                    {
                      total:parseInt(this.state.gameList.count, 10),

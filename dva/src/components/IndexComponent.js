@@ -45,6 +45,15 @@ export default class IndexComponent  extends React.Component {
             </Link>
           </Menu.Item>
         </SubMenu>
+        <SubMenu key="sub2"
+                 title={<span><Icon type="mail" /><span>数据查询</span></span>}
+        >
+          <Menu.Item key="/basicAnalyze">
+            <Link to="/basicAnalyze">
+              基本
+            </Link>
+          </Menu.Item>
+        </SubMenu>
 
       </Menu>
     );
