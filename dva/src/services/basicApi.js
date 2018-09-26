@@ -30,6 +30,17 @@ export function getTeamRank(matchId,boType){
   });
 }
 
+export function getGameListNoDetail(matchId,boType,page){
+  return request(`${basicRoute}/index.php?m=Home&c=Index&a=getGameListNoDetail&matchId=${matchId}&boType=${boType}&page=${page}`,{
+    method: 'get',
+  });
+}
+
+export function getGameDetail(matchId,boType,page){
+  return request(`${basicRoute}/index.php?m=Home&c=Index&a=getGameDetail&matchId=${matchId}&boType=${boType}&page=${page}`,{
+    method: 'get',
+  });
+}
 
 export function postGameList(data){
   return request(`${basicRoute}/index.php?m=Home&c=Index&a=postGameList`, {
@@ -40,3 +51,13 @@ export function postGameList(data){
     },
   });
 }
+export function postDetailData(data){
+  return request(`${basicRoute}/index.php?m=Home&c=Index&a=postDetailData`, {
+    method: 'post',
+    body: JSON.stringify(data),
+    headers: {
+      'Content-Type': 'application/json;charset=UTF-8'
+    },
+  });
+}
+

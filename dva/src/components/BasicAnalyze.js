@@ -4,9 +4,8 @@
  *
  */
 import React from 'react';
-import {Col, Row, Form, Button, message} from "antd";
+import { Row, Form, Button} from "antd";
 import FormItemDiy from '../../public/components/FormItemDiy';
-import {teamListOfOneMatch} from "../services/basicApi";
 
 /**
  *
@@ -15,13 +14,8 @@ export default class BasicAnalyze  extends React.Component {
   constructor(props) {
     super(props);
     this.state={
-      matchId: "1", // 赛事id
-      boList: [], // 赛事阶段列表.
-      boType: "1", // 赛事阶段id.
-      teamList:[],
-      processList:[],
+      teamList: [],
     };
-    this.getTeamListOfOneMatch();
   }
 
   componentDidMount() {
@@ -44,20 +38,9 @@ export default class BasicAnalyze  extends React.Component {
     });
 
   };
-  getTeamListOfOneMatch = () => {
-    this.props.service.teamListOfOneMatch(this.state.matchId).then((res)=>{
-      this.setState({
-        teamList: res.data,
-        boList: res.other.match_type,
-        processList: res.other.process_list,
-        boType: res.other.match_type[0].id,
-      });
-    })
-  };
-
   getTeamRank = () => {
-    this.props.service.getTeamRank(this.state.matchId, this.state.boType).then((res)=>{
-        let teamList = this.state.teamList;
+    this.props.service.getTeamRank(this.props.matchId, this.props.boType).then((res)=>{
+        let teamList = this.props.teamList;
         let data = res.data;
         let length = teamList.length;
         for(let i = 0; i < length; i++){
@@ -86,35 +69,8 @@ export default class BasicAnalyze  extends React.Component {
 
 
   render() {
-    let config = [
-      {
-        label: '选择赛事',
-        handleChange: this.handleMatchIdChange,
-        value: this.state.matchId,
-        options: this.props.matchList,
-        optionKey: 'id',
-        optionName: 'name',
-        type: 'Select',
-        keyName: 'matchId',
-      },
-      {
-        label: '赛事阶段',
-        handleChange: this.stateChange,
-        value: this.state.boType,
-        options: this.state.boList,
-        optionKey: 'id',
-        optionName: 'name',
-        type: 'Select',
-        keyName: 'boType',
-      },
-    ];
     return (
       <div>
-        <Form layout="inline">
-          {config.map((item,index)=>{
-            return <FormItemDiy  key={item.keyName} {...item}/>
-          })}
-        </Form>
         <Button onClick={()=>{this.getTeamRank()}}>提交</Button>
         <Row>
           排名

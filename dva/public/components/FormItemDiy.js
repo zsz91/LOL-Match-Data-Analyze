@@ -4,7 +4,7 @@
  *
  */
 import React from 'react';
-import {Select, Form, DatePicker} from "antd";
+import {Select, Form, DatePicker, TimePicker} from "antd";
 import {PropTypes} from 'prop-types';
 import moment from 'moment';
 
@@ -38,6 +38,9 @@ export default class FormItemDiy  extends React.Component {
                           key={this.props.keyName}
                           onChange={(date,dateString) => {this.props.handleChange(this.props.keyName,dateString)}}
               />;
+      case 'TimePicker':
+        return <TimePicker onChange={(time,timeString)=>{ this.props.handleChange(this.props.keyName,timeString) }}
+                           value={moment(this.props.value, 'HH:mm:ss')} />;
       default:
         return false;
 

@@ -4,12 +4,13 @@
  *
  */
 import React from 'react';
-import {Col, Row} from "antd";
+import {Col, Form, Row} from "antd";
 import IndexComponent from "./IndexComponent";
 import BasicInput from './BasicInput';
 import DetailInput from './DetailInput';
 import BasicAnalyze from './BasicAnalyze';
 import * as service from '../services/basicApi';
+import FormItemDiy from "../../public/components/FormItemDiy";
 
 /**
  *
@@ -19,16 +20,41 @@ export default class InputData  extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      matchList:[],
+      matchList:[],  //赛事列表 所有比赛
+      matchId: "1", // 赛事id
+      boList: [], // 赛事阶段列表.
+      teamList: [],
+      processList: [], //赛事进程 process_list表所有数据
+      boType: "1",
     };
+    this.getTeamListOfOneMatch();
   }
+  stateChange = (key,value) => {
+    this.setState({
+      [key]:value
+    });
+  };
+  getTeamListOfOneMatch = () => {
+    service.teamListOfOneMatch(this.state.matchId).then((res)=>{
+      this.setState({
+        teamList: res.data,
+        boList: res.other.match_type,
+        processList: res.other.process_list,
+        boType: res.other.match_type[0].id,
+      });
+    })
+  };
+  handleMatchIdChange = (key, value) => {
+    this.setState({
+      [key]: value,
+    },() => {
+      this.getTeamListOfOneMatch();
+    });
 
-
+  };
   componentDidMount() {
     service.matchList().then((res)=>{
-        this.setState({
-          matchList:res.data,
-        });
+        this.stateChange('matchList', res.data);
       }
     );
   };
@@ -38,6 +64,7 @@ export default class InputData  extends React.Component {
   };
 
   render() {
+
     let Content;
     switch(this.props.location.pathname){
       case '/basicInput':
@@ -52,12 +79,39 @@ export default class InputData  extends React.Component {
       default:
         break;
     }
+    let config = [
+      {
+        label: '选择赛事',
+        handleChange: this.handleMatchIdChange,
+        value: this.state.matchId,
+        options: this.state.matchList,
+        optionKey: 'id',
+        optionName: 'name',
+        type: 'Select',
+        keyName: 'matchId',
+      },
+      {
+        label: '赛事阶段',
+        handleChange: this.stateChange,
+        value: this.state.boType,
+        options: this.state.boList,
+        optionKey: 'id',
+        optionName: 'name',
+        type: 'Select',
+        keyName: 'boType',
+      },
+    ];
     return (
       <Row style={{ height: '100%' }}>
         <Col span={4} style={{ height: '100%' }}>
           <IndexComponent route={this.props.location.pathname} />
         </Col>
         <Col span={20} style={{height:'100%'}}>
+          <Form layout="inline">
+            {config.map((item,index)=>{
+              return <FormItemDiy  key={item.keyName} {...item}/>
+            })}
+          </Form>
           {this.state.matchList.length ? Content : null}
         </Col>
       </Row>);

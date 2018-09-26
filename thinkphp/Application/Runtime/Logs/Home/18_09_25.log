@@ -6528,3 +6528,287 @@ SQL: SELECT COUNT(*) AS tp_count FROM `game_list` WHERE `match` = 1 AND `type` =
 SQL: SELECT count(total_score) AS `count`,`total_score` FROM `game_list` WHERE `match` = 1 AND `type` = 3 AND `total_score` > 1 GROUP BY total_score  [ RunTime:0.1900s ]
 SQL: SELECT `date`,`total_score` FROM `game_list` WHERE `match` = 1 AND `total_score` IN (2,3) AND `process` IN (1,2,3) ORDER BY id,date asc  [ RunTime:0.1910s ]
 
+[ 2018-09-25T19:35:12+08:00 ] 127.0.0.1 /thinkphp/index.php?m=Home&c=Index&a=getMatchList
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `match_list` [ RunTime:0.1950s ]
+SQL: SELECT * FROM `match_list` ORDER BY name desc  [ RunTime:0.1930s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-09-25T19:35:15+08:00 ] 127.0.0.1 /thinkphp/index.php?m=Home&c=Index&a=getMatchTeamByMatchId&matchId=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `match_list` [ RunTime:0.1940s ]
+SQL: SELECT * FROM `match_list` ORDER BY name desc  [ RunTime:0.1920s ]
+SQL: SHOW COLUMNS FROM `match_team` [ RunTime:0.1910s ]
+SQL: SELECT `team_id` FROM `match_team` WHERE `match_id` = 1 ORDER BY team_area asc  [ RunTime:0.1920s ]
+SQL: SHOW COLUMNS FROM `team_list` [ RunTime:0.1900s ]
+SQL: SELECT * FROM `team_list` WHERE `id` IN ('8','9','7','6','5','4','3','12','13','11','10','1','2','14') ORDER BY name asc  [ RunTime:0.2080s ]
+SQL: SHOW COLUMNS FROM `match_type` [ RunTime:0.1910s ]
+SQL: SELECT * FROM `match_type` WHERE `match_id` = 1 ORDER BY id asc  [ RunTime:0.1900s ]
+SQL: SHOW COLUMNS FROM `process_list` [ RunTime:0.1910s ]
+SQL: SELECT * FROM `process_list` ORDER BY id asc  [ RunTime:0.1920s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-09-25T19:35:16+08:00 ] 127.0.0.1 /thinkphp/index.php?m=Home&c=Index&a=getGameList&matchId=1&page=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `match_list` [ RunTime:0.1930s ]
+SQL: SELECT * FROM `match_list` ORDER BY name desc  [ RunTime:0.1940s ]
+SQL: SHOW COLUMNS FROM `match_team` [ RunTime:0.1940s ]
+SQL: SELECT `team_id` FROM `match_team` WHERE `match_id` = 1  [ RunTime:0.1930s ]
+SQL: SHOW COLUMNS FROM `team_list` [ RunTime:0.1920s ]
+SQL: SELECT `id`,`name` FROM `team_list` WHERE `id` IN ('1','2','3','4','5','6','7','8','9','10','11','12','13','14')  [ RunTime:0.1930s ]
+SQL: SHOW COLUMNS FROM `process_list` [ RunTime:0.1930s ]
+SQL: SELECT `id`,`score` FROM `process_list`  [ RunTime:0.1920s ]
+SQL: SHOW COLUMNS FROM `game_list` [ RunTime:0.1920s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `game_list` WHERE `match` = 1 LIMIT 1   [ RunTime:0.1930s ]
+SQL: SELECT `win`,`date`,`lose`,`id`,`total_score`,`process` FROM `game_list` WHERE `match` = 1 ORDER BY `date` desc,`id` desc LIMIT 0,10   [ RunTime:0.1940s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2018-09-25T19:35:18+08:00 ] 127.0.0.1 /thinkphp/index.php?m=Home&c=Index&a=getMatchTeamByMatchId&matchId=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `match_list` [ RunTime:0.1900s ]
+SQL: SELECT * FROM `match_list` ORDER BY name desc  [ RunTime:0.1890s ]
+SQL: SHOW COLUMNS FROM `match_team` [ RunTime:0.1890s ]
+SQL: SELECT `team_id` FROM `match_team` WHERE `match_id` = 1 ORDER BY team_area asc  [ RunTime:0.1890s ]
+SQL: SHOW COLUMNS FROM `team_list` [ RunTime:0.1890s ]
+SQL: SELECT * FROM `team_list` WHERE `id` IN ('8','9','7','6','5','4','3','12','13','11','10','1','2','14') ORDER BY name asc  [ RunTime:0.1890s ]
+SQL: SHOW COLUMNS FROM `match_type` [ RunTime:0.1900s ]
+SQL: SELECT * FROM `match_type` WHERE `match_id` = 1 ORDER BY id asc  [ RunTime:0.1890s ]
+SQL: SHOW COLUMNS FROM `process_list` [ RunTime:0.1880s ]
+SQL: SELECT * FROM `process_list` ORDER BY id asc  [ RunTime:0.1910s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-09-25T19:35:29+08:00 ] 127.0.0.1 /thinkphp/index.php?m=Home&c=Index&a=getMatchTeamByMatchId&matchId=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `match_list` [ RunTime:0.1970s ]
+SQL: SELECT * FROM `match_list` ORDER BY name desc  [ RunTime:0.1950s ]
+SQL: SHOW COLUMNS FROM `match_team` [ RunTime:0.1950s ]
+SQL: SELECT `team_id` FROM `match_team` WHERE `match_id` = 1 ORDER BY team_area asc  [ RunTime:0.1940s ]
+SQL: SHOW COLUMNS FROM `team_list` [ RunTime:0.1940s ]
+SQL: SELECT * FROM `team_list` WHERE `id` IN ('8','9','7','6','5','4','3','12','13','11','10','1','2','14') ORDER BY name asc  [ RunTime:0.1950s ]
+SQL: SHOW COLUMNS FROM `match_type` [ RunTime:0.1970s ]
+SQL: SELECT * FROM `match_type` WHERE `match_id` = 1 ORDER BY id asc  [ RunTime:0.1930s ]
+SQL: SHOW COLUMNS FROM `process_list` [ RunTime:0.1950s ]
+SQL: SELECT * FROM `process_list` ORDER BY id asc  [ RunTime:0.1970s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-09-25T19:35:37+08:00 ] 127.0.0.1 /thinkphp/index.php?m=Home&c=Index&a=getMatchTeamByMatchId&matchId=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `match_list` [ RunTime:0.1890s ]
+SQL: SELECT * FROM `match_list` ORDER BY name desc  [ RunTime:0.1880s ]
+SQL: SHOW COLUMNS FROM `match_team` [ RunTime:0.1880s ]
+SQL: SELECT `team_id` FROM `match_team` WHERE `match_id` = 1 ORDER BY team_area asc  [ RunTime:0.1880s ]
+SQL: SHOW COLUMNS FROM `team_list` [ RunTime:0.1870s ]
+SQL: SELECT * FROM `team_list` WHERE `id` IN ('8','9','7','6','5','4','3','12','13','11','10','1','2','14') ORDER BY name asc  [ RunTime:0.1880s ]
+SQL: SHOW COLUMNS FROM `match_type` [ RunTime:0.1890s ]
+SQL: SELECT * FROM `match_type` WHERE `match_id` = 1 ORDER BY id asc  [ RunTime:0.1880s ]
+SQL: SHOW COLUMNS FROM `process_list` [ RunTime:0.1880s ]
+SQL: SELECT * FROM `process_list` ORDER BY id asc  [ RunTime:0.1900s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-09-25T19:35:37+08:00 ] 127.0.0.1 /thinkphp/index.php?m=Home&c=Index&a=getGameList&matchId=1&page=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `match_list` [ RunTime:0.1890s ]
+SQL: SELECT * FROM `match_list` ORDER BY name desc  [ RunTime:0.1870s ]
+SQL: SHOW COLUMNS FROM `match_team` [ RunTime:0.1860s ]
+SQL: SELECT `team_id` FROM `match_team` WHERE `match_id` = 1  [ RunTime:0.1880s ]
+SQL: SHOW COLUMNS FROM `team_list` [ RunTime:0.1870s ]
+SQL: SELECT `id`,`name` FROM `team_list` WHERE `id` IN ('1','2','3','4','5','6','7','8','9','10','11','12','13','14')  [ RunTime:0.1880s ]
+SQL: SHOW COLUMNS FROM `process_list` [ RunTime:0.1870s ]
+SQL: SELECT `id`,`score` FROM `process_list`  [ RunTime:0.1880s ]
+SQL: SHOW COLUMNS FROM `game_list` [ RunTime:0.1890s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `game_list` WHERE `match` = 1 LIMIT 1   [ RunTime:0.1880s ]
+SQL: SELECT `win`,`date`,`lose`,`id`,`total_score`,`process` FROM `game_list` WHERE `match` = 1 ORDER BY `date` desc,`id` desc LIMIT 0,10   [ RunTime:0.1870s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-09-25T19:35:45+08:00 ] 127.0.0.1 /thinkphp/index.php?m=Home&c=Index&a=getMatchTeamByMatchId&matchId=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `match_list` [ RunTime:0.1950s ]
+SQL: SELECT * FROM `match_list` ORDER BY name desc  [ RunTime:0.1960s ]
+SQL: SHOW COLUMNS FROM `match_team` [ RunTime:0.1960s ]
+SQL: SELECT `team_id` FROM `match_team` WHERE `match_id` = 1 ORDER BY team_area asc  [ RunTime:0.1960s ]
+SQL: SHOW COLUMNS FROM `team_list` [ RunTime:0.1960s ]
+SQL: SELECT * FROM `team_list` WHERE `id` IN ('8','9','7','6','5','4','3','12','13','11','10','1','2','14') ORDER BY name asc  [ RunTime:0.1960s ]
+SQL: SHOW COLUMNS FROM `match_type` [ RunTime:0.1960s ]
+SQL: SELECT * FROM `match_type` WHERE `match_id` = 1 ORDER BY id asc  [ RunTime:0.1960s ]
+SQL: SHOW COLUMNS FROM `process_list` [ RunTime:0.1950s ]
+SQL: SELECT * FROM `process_list` ORDER BY id asc  [ RunTime:0.1960s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2018-09-25T19:35:48+08:00 ] 127.0.0.1 /thinkphp/index.php?m=Home&c=BasicAnalyze&a=getTeamRank&matchId=1&boType=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `match_list` [ RunTime:0.1920s ]
+SQL: SELECT * FROM `match_list` ORDER BY name desc  [ RunTime:0.1910s ]
+SQL: SHOW COLUMNS FROM `game_list` [ RunTime:0.1900s ]
+SQL: SELECT * FROM `game_list` WHERE `match` = 1 AND `type` = 1  [ RunTime:0.1930s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-09-25T19:35:57+08:00 ] 127.0.0.1 /thinkphp/index.php?m=Home&c=Index&a=getMatchTeamByMatchId&matchId=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `match_list` [ RunTime:0.1910s ]
+SQL: SELECT * FROM `match_list` ORDER BY name desc  [ RunTime:0.1920s ]
+SQL: SHOW COLUMNS FROM `match_team` [ RunTime:0.1930s ]
+SQL: SELECT `team_id` FROM `match_team` WHERE `match_id` = 1 ORDER BY team_area asc  [ RunTime:0.1910s ]
+SQL: SHOW COLUMNS FROM `team_list` [ RunTime:0.1910s ]
+SQL: SELECT * FROM `team_list` WHERE `id` IN ('8','9','7','6','5','4','3','12','13','11','10','1','2','14') ORDER BY name asc  [ RunTime:0.1910s ]
+SQL: SHOW COLUMNS FROM `match_type` [ RunTime:0.1920s ]
+SQL: SELECT * FROM `match_type` WHERE `match_id` = 1 ORDER BY id asc  [ RunTime:0.1920s ]
+SQL: SHOW COLUMNS FROM `process_list` [ RunTime:0.1910s ]
+SQL: SELECT * FROM `process_list` ORDER BY id asc  [ RunTime:0.1930s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-09-25T19:35:57+08:00 ] 127.0.0.1 /thinkphp/index.php?m=Home&c=Index&a=getGameList&matchId=1&page=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `match_list` [ RunTime:0.1970s ]
+SQL: SELECT * FROM `match_list` ORDER BY name desc  [ RunTime:0.1960s ]
+SQL: SHOW COLUMNS FROM `match_team` [ RunTime:0.1960s ]
+SQL: SELECT `team_id` FROM `match_team` WHERE `match_id` = 1  [ RunTime:0.1960s ]
+SQL: SHOW COLUMNS FROM `team_list` [ RunTime:0.1960s ]
+SQL: SELECT `id`,`name` FROM `team_list` WHERE `id` IN ('1','2','3','4','5','6','7','8','9','10','11','12','13','14')  [ RunTime:0.1960s ]
+SQL: SHOW COLUMNS FROM `process_list` [ RunTime:0.1970s ]
+SQL: SELECT `id`,`score` FROM `process_list`  [ RunTime:0.1960s ]
+SQL: SHOW COLUMNS FROM `game_list` [ RunTime:0.1970s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `game_list` WHERE `match` = 1 LIMIT 1   [ RunTime:0.2010s ]
+SQL: SELECT `win`,`date`,`lose`,`id`,`total_score`,`process` FROM `game_list` WHERE `match` = 1 ORDER BY `date` desc,`id` desc LIMIT 0,10   [ RunTime:0.1970s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-09-25T19:36:08+08:00 ] 127.0.0.1 /thinkphp/index.php?m=Home&c=Index&a=getMatchTeamByMatchId&matchId=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `match_list` [ RunTime:0.1900s ]
+SQL: SELECT * FROM `match_list` ORDER BY name desc  [ RunTime:0.1900s ]
+SQL: SHOW COLUMNS FROM `match_team` [ RunTime:0.1910s ]
+SQL: SELECT `team_id` FROM `match_team` WHERE `match_id` = 1 ORDER BY team_area asc  [ RunTime:0.1890s ]
+SQL: SHOW COLUMNS FROM `team_list` [ RunTime:0.1890s ]
+SQL: SELECT * FROM `team_list` WHERE `id` IN ('8','9','7','6','5','4','3','12','13','11','10','1','2','14') ORDER BY name asc  [ RunTime:0.1880s ]
+SQL: SHOW COLUMNS FROM `match_type` [ RunTime:0.1890s ]
+SQL: SELECT * FROM `match_type` WHERE `match_id` = 1 ORDER BY id asc  [ RunTime:0.1900s ]
+SQL: SHOW COLUMNS FROM `process_list` [ RunTime:0.1890s ]
+SQL: SELECT * FROM `process_list` ORDER BY id asc  [ RunTime:0.1910s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-09-25T19:36:09+08:00 ] 127.0.0.1 /thinkphp/index.php?m=Home&c=Index&a=getGameList&matchId=1&page=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `match_list` [ RunTime:0.1960s ]
+SQL: SELECT * FROM `match_list` ORDER BY name desc  [ RunTime:0.1950s ]
+SQL: SHOW COLUMNS FROM `match_team` [ RunTime:0.1960s ]
+SQL: SELECT `team_id` FROM `match_team` WHERE `match_id` = 1  [ RunTime:0.1960s ]
+SQL: SHOW COLUMNS FROM `team_list` [ RunTime:0.1970s ]
+SQL: SELECT `id`,`name` FROM `team_list` WHERE `id` IN ('1','2','3','4','5','6','7','8','9','10','11','12','13','14')  [ RunTime:0.1960s ]
+SQL: SHOW COLUMNS FROM `process_list` [ RunTime:0.1950s ]
+SQL: SELECT `id`,`score` FROM `process_list`  [ RunTime:0.1960s ]
+SQL: SHOW COLUMNS FROM `game_list` [ RunTime:0.2000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `game_list` WHERE `match` = 1 LIMIT 1   [ RunTime:0.1960s ]
+SQL: SELECT `win`,`date`,`lose`,`id`,`total_score`,`process` FROM `game_list` WHERE `match` = 1 ORDER BY `date` desc,`id` desc LIMIT 0,10   [ RunTime:0.1950s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-09-25T19:36:11+08:00 ] 127.0.0.1 /thinkphp/index.php?m=Home&c=Index&a=getMatchTeamByMatchId&matchId=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `match_list` [ RunTime:0.1950s ]
+SQL: SELECT * FROM `match_list` ORDER BY name desc  [ RunTime:0.2340s ]
+SQL: SHOW COLUMNS FROM `match_team` [ RunTime:0.2130s ]
+SQL: SELECT `team_id` FROM `match_team` WHERE `match_id` = 1 ORDER BY team_area asc  [ RunTime:0.1960s ]
+SQL: SHOW COLUMNS FROM `team_list` [ RunTime:0.1960s ]
+SQL: SELECT * FROM `team_list` WHERE `id` IN ('8','9','7','6','5','4','3','12','13','11','10','1','2','14') ORDER BY name asc  [ RunTime:0.1950s ]
+SQL: SHOW COLUMNS FROM `match_type` [ RunTime:0.1950s ]
+SQL: SELECT * FROM `match_type` WHERE `match_id` = 1 ORDER BY id asc  [ RunTime:0.1960s ]
+SQL: SHOW COLUMNS FROM `process_list` [ RunTime:0.1960s ]
+SQL: SELECT * FROM `process_list` ORDER BY id asc  [ RunTime:0.1970s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+

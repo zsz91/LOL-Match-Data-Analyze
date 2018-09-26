@@ -5,13 +5,13 @@
       <change beforePath="$PROJECT_DIR$/../2018年9月18日184715LOL.sql" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../2018年9月19日184715LOL.sql" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../2018年9月21日LOL.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/components/FormItemDiy.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/components/FormItemDiy.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/BasicAnalyze.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/BasicAnalyze.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/BasicInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/BasicInput.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/DetailInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DetailInput.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/IndexComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/IndexComponent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/InputData.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/InputData.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/basicApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/basicApi.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../thinkphp/Application/Home/Controller/BasicAnalyzeController.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/../thinkphp/Application/Home/Controller/BasicAnalyzeController.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../thinkphp/Application/Home/Controller/IndexController.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/../thinkphp/Application/Home/Controller/IndexController.class.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../thinkphp/Application/Runtime/Logs/Home/18_09_25.log" beforeDir="false" afterPath="$PROJECT_DIR$/../thinkphp/Application/Runtime/Logs/Home/18_09_25.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../thinkphp/ThinkPHP/Conf/convention.php" beforeDir="false" afterPath="$PROJECT_DIR$/../thinkphp/ThinkPHP/Conf/convention.php" afterDir="false" />
     </list>
@@ -38,7 +38,7 @@
           <entry key="editorconfig" value="1" />
           <entry key="eslintrc" value="4" />
           <entry key="html" value="4" />
-          <entry key="js" value="53" />
+          <entry key="js" value="58" />
           <entry key="json" value="2" />
           <entry key="less" value="2" />
           <entry key="scss" value="1" />
@@ -50,7 +50,7 @@
           <entry key="CSS" value="4" />
           <entry key="HTML" value="4" />
           <entry key="JSON" value="6" />
-          <entry key="JavaScript" value="53" />
+          <entry key="JavaScript" value="58" />
           <entry key="Less" value="2" />
           <entry key="PLAIN_TEXT" value="5" />
           <entry key="SCSS" value="1" />
@@ -59,7 +59,7 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="html" value="48" />
-          <entry key="js" value="10143" />
+          <entry key="js" value="14274" />
           <entry key="json" value="8" />
           <entry key="less" value="67" />
           <entry key="scss" value="1" />
@@ -70,7 +70,7 @@
         <counts>
           <entry key="HTML" value="48" />
           <entry key="JSON" value="8" />
-          <entry key="JavaScript" value="10143" />
+          <entry key="JavaScript" value="14274" />
           <entry key="Less" value="67" />
           <entry key="PLAIN_TEXT" value="99" />
           <entry key="SCSS" value="1" />
@@ -86,40 +86,62 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/services/basicApi.js">
+        <entry file="file://$PROJECT_DIR$/src/components/InputData.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="461">
-              <caret line="27" column="103" selection-start-line="27" selection-start-column="97" selection-end-line="27" selection-end-column="103" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/BasicInput.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2736">
-              <caret line="6" selection-start-line="6" selection-end-line="7" />
+            <state relative-caret-position="-50">
+              <caret line="39" column="16" selection-start-line="39" selection-start-column="8" selection-end-line="39" selection-end-column="16" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
-                <element signature="e#837#888#0" />
-                <element signature="e#931#1500#0" />
-                <element signature="e#1862#1872#0" />
-                <element signature="e#1947#2540#0" />
-                <element signature="e#2594#2778#0" />
-                <element signature="e#2820#3024#0" />
-                <element signature="e#3063#3260#0" />
-                <element signature="e#3302#3629#0" />
-                <element signature="e#3726#5729#0" />
+                <element signature="e#47#73#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/DetailInput.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="181">
-              <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
+            <state relative-caret-position="669">
+              <caret line="293" column="54" selection-start-line="293" selection-start-column="54" selection-end-line="293" selection-end-column="54" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+                <element signature="e#47#73#0" expanded="true" />
+                <element signature="e#1550#1942#0" />
+                <element signature="e#2047#2057#0" />
+                <element signature="e#2405#2415#0" />
+                <element signature="e#2594#2604#0" />
+                <element signature="e#3011#4631#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/components/FormItemDiy.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="326">
+              <caret line="42" column="75" selection-start-line="42" selection-start-column="75" selection-end-line="42" selection-end-column="75" />
+              <folding>
+                <element signature="e#47#73#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/services/basicApi.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="478">
+              <caret line="39" column="72" selection-start-line="39" selection-start-column="72" selection-end-line="39" selection-end-column="72" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/BasicInput.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="679">
+              <caret line="270" column="18" lean-forward="true" selection-start-line="270" selection-start-column="18" selection-end-line="270" selection-end-column="18" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="e#47#73#0" expanded="true" />
@@ -131,8 +153,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/BasicAnalyze.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-351">
-              <caret line="87" column="12" lean-forward="true" selection-start-line="87" selection-start-column="12" selection-end-line="87" selection-end-column="12" />
+            <state relative-caret-position="1045">
+              <caret line="55" column="16" selection-start-line="55" selection-start-column="8" selection-end-line="55" selection-end-column="16" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="e#47#73#0" expanded="true" />
@@ -165,11 +187,7 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>&lt;html</find>
-      <find>route</find>
       <find>delay</find>
-      <find>handleMatchIdChange</find>
-      <find>matchId</find>
       <find>teamA</find>
       <find>teamB</find>
       <find>team_lose</find>
@@ -178,21 +196,27 @@
       <find>teamWin</find>
       <find>team</find>
       <find>matchList</find>
-      <find>boList</find>
-      <find>boType</find>
       <find>key</find>
       <find>totalScoreList</find>
-      <find>process</find>
       <find>boProcessList</find>
-      <find>processList</find>
       <find>netScore</find>
       <find>type</find>
       <find>getBoNumber</find>
       <find>services/</find>
       <find>127.0.0.</find>
-      <find>getTeamListOfOneMatch</find>
       <find>gamList</find>
+      <find>getGameListOfOneMatch</find>
+      <find>getTeamListOfOneMatch</find>
+      <find>handleMatchIdChange</find>
+      <find>matchId</find>
+      <find>boType</find>
+      <find>process</find>
+      <find>boList</find>
+      <find>teamList</find>
       <find>gameList</find>
+      <find>console.log</find>
+      <find>getGameDetail</find>
+      <find>processList</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -211,7 +235,6 @@
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/utils/request.js" />
         <option value="$PROJECT_DIR$/src/components/DefaultComponent.js" />
-        <option value="$PROJECT_DIR$/public/components/FormItemDiy.js" />
         <option value="$PROJECT_DIR$/src/services/example.js" />
         <option value="$PROJECT_DIR$/.webpackrc" />
         <option value="$PROJECT_DIR$/dist/index.html" />
@@ -219,11 +242,13 @@
         <option value="$PROJECT_DIR$/src/router.js" />
         <option value="$PROJECT_DIR$/src/styles/bsicinput.scss" />
         <option value="$PROJECT_DIR$/src/styles/bsicinput.less" />
-        <option value="$PROJECT_DIR$/src/components/BasicInput.js" />
         <option value="$PROJECT_DIR$/src/components/IndexComponent.js" />
-        <option value="$PROJECT_DIR$/src/services/basicApi.js" />
         <option value="$PROJECT_DIR$/src/components/BasicAnalyze.js" />
         <option value="$PROJECT_DIR$/src/components/InputData.js" />
+        <option value="$PROJECT_DIR$/src/components/BasicInput.js" />
+        <option value="$PROJECT_DIR$/dist/components/FormItemDiy.js" />
+        <option value="$PROJECT_DIR$/public/components/FormItemDiy.js" />
+        <option value="$PROJECT_DIR$/src/services/basicApi.js" />
         <option value="$PROJECT_DIR$/src/components/DetailInput.js" />
       </list>
     </option>
@@ -251,10 +276,10 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="619" />
-    <option name="y" value="134" />
-    <option name="width" value="1680" />
-    <option name="height" value="944" />
+    <option name="x" value="58" />
+    <option name="y" value="108" />
+    <option name="width" value="1932" />
+    <option name="height" value="1074" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -274,6 +299,12 @@
               <item name="dva" type="b2602c69:ProjectViewProjectNode" />
               <item name="dva" type="462c0819:PsiDirectoryNode" />
               <item name="dist" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dva" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dva" type="462c0819:PsiDirectoryNode" />
+              <item name="dist" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="dva" type="b2602c69:ProjectViewProjectNode" />
@@ -367,28 +398,28 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1537173305998</updated>
-      <workItem from="1537173310677" duration="60872000" />
+      <workItem from="1537173310677" duration="76822000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60872000" />
+    <option name="totallyTimeSpent" value="76822000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="npm" sideWeight="0.30204082" side_tool="true" visible="true" weight="0.22885835" />
+      <window_info id="npm" sideWeight="0.30186334" side_tool="true" visible="true" weight="0.22885835" />
       <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6979592" visible="true" weight="0.22885835" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6981366" visible="true" weight="0.22885835" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Terminal" weight="0.33459118" />
-      <window_info anchor="bottom" id="Event Log" sideWeight="0.5005285" side_tool="true" visible="true" weight="0.17785235" />
+      <window_info anchor="bottom" id="Terminal" sideWeight="0.49947035" weight="0.31517962" />
+      <window_info anchor="bottom" id="Event Log" sideWeight="0.5010571" side_tool="true" visible="true" weight="0.09955257" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49947146" visible="true" weight="0.17785235" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4989429" visible="true" weight="0.09955257" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -429,7 +460,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/components/BasicInput.js</url>
-          <line>311</line>
+          <line>241</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
@@ -531,16 +562,6 @@
     <entry file="file://$PROJECT_DIR$/.roadhogrc.mock.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/components/FormItemDiy.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="17" column="21" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
-          <folding>
-            <element signature="e#47#73#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/router.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
@@ -615,17 +636,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/services/basicApi.js">
+    <entry file="file://$PROJECT_DIR$/src/components/BasicAnalyze.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="461">
-          <caret line="27" column="103" selection-start-line="27" selection-start-column="97" selection-end-line="27" selection-end-column="103" />
+        <state relative-caret-position="1045">
+          <caret line="55" column="16" selection-start-line="55" selection-start-column="8" selection-end-line="55" selection-end-column="16" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#47#73#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/components/FormItemDiy.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="41" column="75" lean-forward="true" selection-start-line="39" selection-start-column="4" selection-end-line="41" selection-end-column="75" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#47#73#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/InputData.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-209">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
+        <state relative-caret-position="-50">
+          <caret line="39" column="16" selection-start-line="39" selection-start-column="8" selection-end-line="39" selection-end-column="16" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="e#47#73#0" expanded="true" />
@@ -633,40 +669,43 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/BasicAnalyze.js">
+    <entry file="file://$PROJECT_DIR$/public/components/FormItemDiy.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-351">
-          <caret line="87" column="12" lean-forward="true" selection-start-line="87" selection-start-column="12" selection-end-line="87" selection-end-column="12" />
+        <state relative-caret-position="326">
+          <caret line="42" column="75" selection-start-line="42" selection-start-column="75" selection-end-line="42" selection-end-column="75" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
             <element signature="e#47#73#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/BasicInput.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2736">
-          <caret line="6" selection-start-line="6" selection-end-line="7" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#837#888#0" />
-            <element signature="e#931#1500#0" />
-            <element signature="e#1862#1872#0" />
-            <element signature="e#1947#2540#0" />
-            <element signature="e#2594#2778#0" />
-            <element signature="e#2820#3024#0" />
-            <element signature="e#3063#3260#0" />
-            <element signature="e#3302#3629#0" />
-            <element signature="e#3726#5729#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/DetailInput.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
+        <state relative-caret-position="669">
+          <caret line="293" column="54" selection-start-line="293" selection-start-column="54" selection-end-line="293" selection-end-column="54" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#47#73#0" expanded="true" />
+            <element signature="e#1550#1942#0" />
+            <element signature="e#2047#2057#0" />
+            <element signature="e#2405#2415#0" />
+            <element signature="e#2594#2604#0" />
+            <element signature="e#3011#4631#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/services/basicApi.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="478">
+          <caret line="39" column="72" selection-start-line="39" selection-start-column="72" selection-end-line="39" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/BasicInput.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="679">
+          <caret line="270" column="18" lean-forward="true" selection-start-line="270" selection-start-column="18" selection-end-line="270" selection-end-column="18" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="e#47#73#0" expanded="true" />
