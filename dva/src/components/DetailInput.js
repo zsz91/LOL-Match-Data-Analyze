@@ -66,6 +66,13 @@ export default class DetailInput  extends React.Component {
   };
 
   selectOneGame = (item) =>{
+      let process = item.process;
+      for(let item2 of this.props.processList){
+        if(item2.id === process){
+           item.process = item2.process.split('-');
+          console.log(item);
+        }
+      }
     this.stateChange('chooseGame',item);
     let data = this.state.data;
     data = {
@@ -97,6 +104,7 @@ export default class DetailInput  extends React.Component {
   };
 
   dataChange = (key, value) => {
+
     let data = this.state.data;
     data[key] = value;
     this.stateChange('data',data);
@@ -104,7 +112,10 @@ export default class DetailInput  extends React.Component {
 
   postDetailData = () =>{
     let data = this.state.data;
-    let winId = this.state.chooseGame.win;
+    let process = this.state.chooseGame.process[this.state.data.number - 1];
+    console.log(process);
+    let winId = parseInt(process, 10) === 1 ? this.state.chooseGame.win : this.state.chooseGame.lose;
+    console.log(winId);
     data.five_kill_win = winId === data.five_kill ? 1 : 0;
     data.fb_win = winId === data.first_blood ? 1 : 0;
     data.ten_kill_win = winId === data.ten_kill ? 1 : 0;

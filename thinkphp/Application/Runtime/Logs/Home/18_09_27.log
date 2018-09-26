@@ -1,0 +1,258 @@
+[ 2018-09-27T00:03:12+08:00 ] 127.0.0.1 /thinkphp/index.php?m=Home&c=Index&a=getGameListNoDetail&matchId=2&boType=7&page=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `match_list` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `match_list` ORDER BY name desc  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `game_list` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `game_list` WHERE `match` = 2 AND `type` = 7 ORDER BY date,id asc LIMIT 0,10   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `game_detail` [ RunTime:0.0020s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `game_detail` WHERE `game_id` = 223 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `game_detail` WHERE `game_id` = 224 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `game_detail` WHERE `game_id` = 225 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `game_detail` WHERE `game_id` = 226 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `game_detail` WHERE `game_id` = 227 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `game_detail` WHERE `game_id` = 228 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `game_detail` WHERE `game_id` = 229 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `game_list` WHERE `match` = 2 AND `type` = 7 LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-09-27T00:03:12+08:00 ] 127.0.0.1 /thinkphp/index.php?m=Home&c=Index&a=getGameDetail&matchId=2&boType=7&page=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `match_list` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `match_list` ORDER BY name desc  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `game_list` [ RunTime:0.0020s ]
+SQL: SELECT `id` FROM `game_list` WHERE `match` = 2 AND `type` = 7 ORDER BY date,id asc  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `game_detail` [ RunTime:0.0010s ]
+SQL: SELECT * FROM `game_detail` WHERE `game_id` IN ('223','224','225','226','227','228','229') ORDER BY game_id asc LIMIT 0,10   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `game_detail` WHERE `game_id` IN ('223','224','225','226','227','228','229') ORDER BY game_id asc LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-09-27T00:06:09+08:00 ] 127.0.0.1 /thinkphp/index.php?m=Home&c=Index&a=postDetailData
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `match_list` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `match_list` ORDER BY name desc  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `game_detail` [ RunTime:0.0020s ]
+SQL: SELECT `id` FROM `game_detail` WHERE `game_id` = 224 AND `number` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: INSERT INTO `game_detail` (`game_id`,`blue`,`red`,`first_blood`,`number`,`five_kill`,`ten_kill`,`use_time`,`five_kill_win`,`fb_win`,`ten_kill_win`,`blue_win`) VALUES ('224','30','35','30','1','30','30','00:25:15','1','1','1','1') [ RunTime:0.0450s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.003001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003001s ]
+
+[ 2018-09-27T00:08:21+08:00 ] 127.0.0.1 /thinkphp/index.php?m=Home&c=Index&a=postDetailData
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `match_list` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `match_list` ORDER BY name desc  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `game_detail` [ RunTime:0.0020s ]
+SQL: SELECT `id` FROM `game_detail` WHERE `game_id` = 224 AND `number` = 2 LIMIT 1   [ RunTime:0.0010s ]
+SQL: INSERT INTO `game_detail` (`game_id`,`blue`,`red`,`first_blood`,`number`,`five_kill`,`ten_kill`,`use_time`,`five_kill_win`,`fb_win`,`ten_kill_win`,`blue_win`) VALUES ('224','35','30','30','2','35','35','00:26:15','1','0','1','1') [ RunTime:0.0460s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-09-27T00:09:57+08:00 ] 127.0.0.1 /thinkphp/index.php?m=Home&c=Index&a=postDetailData
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `match_list` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `match_list` ORDER BY name desc  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `game_detail` [ RunTime:0.0020s ]
+SQL: SELECT `id` FROM `game_detail` WHERE `game_id` = 224 AND `number` = 3 LIMIT 1   [ RunTime:0.0010s ]
+SQL: INSERT INTO `game_detail` (`game_id`,`blue`,`red`,`first_blood`,`number`,`five_kill`,`ten_kill`,`use_time`,`five_kill_win`,`fb_win`,`ten_kill_win`,`blue_win`) VALUES ('224','30','35','35','3','35','35','00:40:30','1','1','1','0') [ RunTime:0.0320s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-09-27T00:11:12+08:00 ] 127.0.0.1 /thinkphp/index.php?m=Home&c=Index&a=postDetailData
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `match_list` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `match_list` ORDER BY name desc  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `game_detail` [ RunTime:0.0020s ]
+SQL: SELECT `id` FROM `game_detail` WHERE `game_id` = 224 AND `number` = 4 LIMIT 1   [ RunTime:0.0000s ]
+SQL: INSERT INTO `game_detail` (`game_id`,`blue`,`red`,`first_blood`,`number`,`five_kill`,`ten_kill`,`use_time`,`five_kill_win`,`fb_win`,`ten_kill_win`,`blue_win`) VALUES ('224','35','30','30','4','35','30','00:37:27','0','1','1','0') [ RunTime:0.0390s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-09-27T00:12:26+08:00 ] 127.0.0.1 /thinkphp/index.php?m=Home&c=Index&a=postDetailData
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `match_list` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `match_list` ORDER BY name desc  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `game_detail` [ RunTime:0.0020s ]
+SQL: SELECT `id` FROM `game_detail` WHERE `game_id` = 224 AND `number` = 5 LIMIT 1   [ RunTime:0.0000s ]
+SQL: INSERT INTO `game_detail` (`game_id`,`blue`,`red`,`first_blood`,`number`,`five_kill`,`ten_kill`,`use_time`,`five_kill_win`,`fb_win`,`ten_kill_win`,`blue_win`) VALUES ('224','30','35','30','5','35','35','00:37:40','0','1','0','1') [ RunTime:0.0430s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-09-27T00:14:36+08:00 ] 127.0.0.1 /thinkphp/index.php?m=Home&c=Index&a=postDetailData
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `match_list` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `match_list` ORDER BY name desc  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `game_detail` [ RunTime:0.0020s ]
+SQL: SELECT `id` FROM `game_detail` WHERE `game_id` = 225 AND `number` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: INSERT INTO `game_detail` (`game_id`,`blue`,`red`,`first_blood`,`number`,`five_kill`,`ten_kill`,`use_time`,`five_kill_win`,`fb_win`,`ten_kill_win`,`blue_win`) VALUES ('225','20','4','20','1','20','4','00:43:16','0','0','1','0') [ RunTime:0.0310s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-09-27T00:15:40+08:00 ] 127.0.0.1 /thinkphp/index.php?m=Home&c=Index&a=postDetailData
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `match_list` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `match_list` ORDER BY name desc  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `game_detail` [ RunTime:0.0020s ]
+SQL: SELECT `id` FROM `game_detail` WHERE `game_id` = 225 AND `number` = 1 LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001001s ]
+
+[ 2018-09-27T00:16:20+08:00 ] 127.0.0.1 /thinkphp/index.php?m=Home&c=Index&a=postDetailData
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `match_list` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `match_list` ORDER BY name desc  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `game_detail` [ RunTime:0.0010s ]
+SQL: SELECT `id` FROM `game_detail` WHERE `game_id` = 225 AND `number` = 1 LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-09-27T00:16:23+08:00 ] 127.0.0.1 /thinkphp/index.php?m=Home&c=Index&a=postDetailData
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `match_list` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `match_list` ORDER BY name desc  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `game_detail` [ RunTime:0.0030s ]
+SQL: SELECT `id` FROM `game_detail` WHERE `game_id` = 225 AND `number` = 2 LIMIT 1   [ RunTime:0.0000s ]
+SQL: INSERT INTO `game_detail` (`game_id`,`blue`,`red`,`first_blood`,`number`,`five_kill`,`ten_kill`,`use_time`,`five_kill_win`,`fb_win`,`ten_kill_win`,`blue_win`) VALUES ('225','20','4','20','2','20','20','00:44:50','0','0','0','0') [ RunTime:0.0380s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-09-27T00:19:40+08:00 ] 127.0.0.1 /thinkphp/index.php?m=Home&c=Index&a=postDetailData
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `match_list` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `match_list` ORDER BY name desc  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `game_detail` [ RunTime:0.0020s ]
+SQL: SELECT `id` FROM `game_detail` WHERE `game_id` = 225 AND `number` = 3 LIMIT 1   [ RunTime:0.0000s ]
+SQL: INSERT INTO `game_detail` (`game_id`,`blue`,`red`,`first_blood`,`number`,`five_kill`,`ten_kill`,`use_time`,`five_kill_win`,`fb_win`,`ten_kill_win`,`blue_win`) VALUES ('225','20','4','4','3','4','4','00:54:50','0','0','0','1') [ RunTime:0.0450s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2018-09-27T00:21:19+08:00 ] 127.0.0.1 /thinkphp/index.php?m=Home&c=Index&a=postDetailData
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `match_list` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `match_list` ORDER BY name desc  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `game_detail` [ RunTime:0.0020s ]
+SQL: SELECT `id` FROM `game_detail` WHERE `game_id` = 225 AND `number` = 4 LIMIT 1   [ RunTime:0.0000s ]
+SQL: INSERT INTO `game_detail` (`game_id`,`blue`,`red`,`first_blood`,`number`,`five_kill`,`ten_kill`,`use_time`,`five_kill_win`,`fb_win`,`ten_kill_win`,`blue_win`) VALUES ('225','20','4','20','4','20','4','00:40:12','0','0','1','0') [ RunTime:0.0440s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-09-27T00:21:21+08:00 ] 127.0.0.1 /thinkphp/index.php?m=Home&c=Index&a=getGameListNoDetail&matchId=2&boType=7&page=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `match_list` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `match_list` ORDER BY name desc  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `game_list` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `game_list` WHERE `match` = 2 AND `type` = 7 ORDER BY date,id asc LIMIT 0,10   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `game_detail` [ RunTime:0.0020s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `game_detail` WHERE `game_id` = 223 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `game_detail` WHERE `game_id` = 224 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `game_detail` WHERE `game_id` = 225 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `game_detail` WHERE `game_id` = 226 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `game_detail` WHERE `game_id` = 227 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `game_detail` WHERE `game_id` = 228 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `game_detail` WHERE `game_id` = 229 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `game_list` WHERE `match` = 2 AND `type` = 7 LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-09-27T00:21:21+08:00 ] 127.0.0.1 /thinkphp/index.php?m=Home&c=Index&a=getGameDetail&matchId=2&boType=7&page=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+SQL: SHOW COLUMNS FROM `match_list` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `match_list` ORDER BY name desc  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `game_list` [ RunTime:0.0020s ]
+SQL: SELECT `id` FROM `game_list` WHERE `match` = 2 AND `type` = 7 ORDER BY date,id asc  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `game_detail` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `game_detail` WHERE `game_id` IN ('223','224','225','226','227','228','229') ORDER BY game_id asc LIMIT 0,10   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `game_detail` WHERE `game_id` IN ('223','224','225','226','227','228','229') ORDER BY game_id asc LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
