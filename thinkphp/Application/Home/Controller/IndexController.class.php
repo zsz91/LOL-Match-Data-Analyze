@@ -92,8 +92,8 @@ class IndexController extends BasicController{
          $M = M('game_list');
          $ids = $M->where($where)->order('date,id asc')->getField('id', true);
          $detailWhere['game_id'] = array('in',$ids);
-         $data = M('game_detail')->order('game_id asc')->where($detailWhere)->limit($page*10,10)->select();
-         $count =  M('game_detail')->order('game_id asc')->where($detailWhere)->count();
+         $data = M('game_detail')->order('game_id,number asc')->where($detailWhere)->limit($page*10,10)->select();
+         $count =  M('game_detail')->order('game_id,number asc')->where($detailWhere)->count();
          $this->returnRes($data,array('count'=>$count));
     }
 
