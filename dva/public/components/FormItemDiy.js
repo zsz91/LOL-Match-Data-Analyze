@@ -4,7 +4,7 @@
  *
  */
 import React from 'react';
-import {Select, Form, DatePicker, TimePicker} from "antd";
+import {Select, Form, DatePicker, TimePicker, Input} from "antd";
 import {PropTypes} from 'prop-types';
 import moment from 'moment';
 
@@ -17,8 +17,39 @@ const dateFormat = 'YYYY-MM-DD';
  */
 export default class FormItemDiy  extends React.Component {
 
+   range = (start, end) => {
+    const result = [];
+    for (let i = start; i < end; i++) {
+      result.push(i);
+    }
+    return result;
+  };
+
+   disabledHours = () => {
+    const hours = this.range(0, 60);
+    hours.splice(0, 2); //删掉 0 1 让0,1可以使用
+    // 返回 的时间都是不能使用的
+    return hours;
+    };
+    disableSeconds = () => {
+     let seconds = [];
+     for(let i = 0; i < 60; i++){
+      if( i%20 !== 0 ){
+        seconds.push(i);
+      }
+    }
+    return seconds;
+   };
+
   switchType = () => {
     switch(this.props.type){
+      case 'Input':
+        return <Input style={{width:'150px'}}
+                      onChange={(e)=>{this.props.handleChange(this.props.keyName, e.target.value)}}
+                      value = {this.props.value}
+                      key={this.props.keyName}
+        />;
+        break;
       case 'Select':
         return <Select style={{width:'150px'}}
                        onChange={(value)=>{this.props.handleChange(this.props.keyName, value)}}
@@ -40,7 +71,12 @@ export default class FormItemDiy  extends React.Component {
               />;
       case 'TimePicker':
         return <TimePicker onChange={(time,timeString)=>{ this.props.handleChange(this.props.keyName,timeString) }}
-                           value={moment(this.props.value, 'HH:mm:ss')} />;
+                           value={moment(this.props.value, 'mm:ss')}
+                           format="mm:ss"
+                       //    disabledHours={this.disabledHours}
+                           hideDisabledOptions
+                        //   disabledSeconds={this.disableSeconds}
+        />;
       default:
         return false;
 

@@ -28,6 +28,7 @@ export default class DetailInput  extends React.Component {
         number: 1, // 第几场比赛
         five_kill: 1, // 首先达到5次击杀的队伍
         ten_kill: 1,   // 首先达到10次击杀的队伍
+        use_hour: '00',
         use_time: '00:35:00', // 游戏时长 单位秒
     // red : 1,        // 红色方
     // five_kill_win: 1,  // 首先达到5次击杀的队伍 并获胜
@@ -85,7 +86,8 @@ export default class DetailInput  extends React.Component {
         number: 1, // 第几场比赛
         five_kill: item.win, // 首先达到5次击杀的队伍
         ten_kill: item.win,   // 首先达到10次击杀的队伍
-        use_time: '00:35:00',// 游戏时长 单位秒
+        use_hour: '00',
+        use_time: '35:00',// 游戏时长 单位秒
     };
     this.stateChange('data',data);
   };
@@ -120,6 +122,7 @@ export default class DetailInput  extends React.Component {
     data.fb_win = winId === data.first_blood ? 1 : 0;
     data.ten_kill_win = winId === data.ten_kill ? 1 : 0;
     data.blue_win = winId === data.blue ? 1 : 0;
+    data.use_time = data.use_hour + ":" + data.use_time;
     this.props.service.postDetailData(data).then((res)=>{
           message.info(res.data);
     });
@@ -182,6 +185,13 @@ export default class DetailInput  extends React.Component {
       ];
       detailConfig = [
         {
+          label: '比赛用时分钟',
+          handleChange: this.dataChange,
+          value: this.state.data.use_time,
+          type: 'Input',
+          keyName: 'use_time',
+        },
+        {
           label: '一血方',
           handleChange: this.dataChange,
           value: this.state.data.first_blood,
@@ -222,12 +232,16 @@ export default class DetailInput  extends React.Component {
           keyName: 'ten_kill',
         },
         {
-          label: '比赛用时',
+          label: '比赛用时小时',
           handleChange: this.dataChange,
-          value: this.state.data.use_time,
-          type: 'TimePicker',
-          keyName: 'use_time',
+          value: this.state.data.use_hour,
+          options: [{id: '00'},{id: '01'}],
+          optionKey: 'id',
+          optionName: 'id',
+          type: 'Select',
+          keyName: 'use_hour',
         },
+
       ];
     }
 
