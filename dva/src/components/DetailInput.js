@@ -29,7 +29,7 @@ export default class DetailInput  extends React.Component {
         five_kill: 1, // 首先达到5次击杀的队伍
         ten_kill: 1,   // 首先达到10次击杀的队伍
         use_hour: '00',
-        use_time: '00:35:00', // 游戏时长 单位秒
+        use_time: '35:00', // 游戏时长 单位秒
     // red : 1,        // 红色方
     // five_kill_win: 1,  // 首先达到5次击杀的队伍 并获胜
     // fb_win: 1,  // 拿到1血的队伍是否获胜
@@ -115,9 +115,7 @@ export default class DetailInput  extends React.Component {
   postDetailData = () =>{
     let data = this.state.data;
     let process = this.state.chooseGame.process[this.state.data.number - 1];
-    console.log(process);
     let winId = parseInt(process, 10) === 1 ? this.state.chooseGame.win : this.state.chooseGame.lose;
-    console.log(winId);
     data.five_kill_win = winId === data.five_kill ? 1 : 0;
     data.fb_win = winId === data.first_blood ? 1 : 0;
     data.ten_kill_win = winId === data.ten_kill ? 1 : 0;
@@ -125,6 +123,7 @@ export default class DetailInput  extends React.Component {
     data.use_time = data.use_hour + ":" + data.use_time;
     this.props.service.postDetailData(data).then((res)=>{
           message.info(res.data);
+          this.dataChange('use_time','');
     });
   };
 

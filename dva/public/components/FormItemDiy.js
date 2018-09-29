@@ -51,7 +51,7 @@ export default class FormItemDiy  extends React.Component {
         />;
         break;
       case 'Select':
-        return <Select style={{width:'150px'}}
+        return <Select style={{width:'250px'}}
                        onChange={(value)=>{this.props.handleChange(this.props.keyName, value)}}
                        value = {this.props.value}
                        key={this.props.keyName}
