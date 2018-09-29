@@ -102,11 +102,11 @@ export default class InputData  extends React.Component {
       },
     ];
     return (
-      <Row style={{ height: '100%' }}>
+      <Row style={{ height: '100%',overflowY: "scroll"}}>
         <Col span={4} style={{ height: '100%' }}>
           <IndexComponent route={this.props.location.pathname} />
         </Col>
-        <Col span={20} style={{height:'100%'}}>
+        <Col span={20} style={{height:'100%', overflowY: "scroll"}}>
           <Form layout="inline">
             {config.map((item,index)=>{
               return <FormItemDiy  key={item.keyName} {...item}/>
