@@ -15,6 +15,7 @@ export default class BasicAnalyze  extends React.Component {
     super(props);
     this.state={
       teamList: [],
+      oneTeamDetail:[],
     };
   }
 
@@ -62,11 +63,14 @@ export default class BasicAnalyze  extends React.Component {
             return 1;
           }
         });
-        console.log(teamList);
         this.stateChange('teamList',teamList);
     });
   };
-
+  getOneTeamGameDetail = (item) => {
+    this.props.service.getOneTeamGameDetail(this.props.matchId, this.props.boType, item.id).then((res)=>{
+      this.stateChange('oneTeamDetail',res.data);
+    })
+  };
 
   render() {
     return (
@@ -80,8 +84,15 @@ export default class BasicAnalyze  extends React.Component {
             if((item.lose <= 0 && item.win <=0) || typeof item.win === 'undefined'){
               return null;
             }
-          return <Row key={item.id}>{index+1}-{item.name}:{item.win + ""}-{item.lose + ""}</Row>})
+          return <Row key={item.id}
+                      onClick ={()=>{this.getOneTeamGameDetail(item)}}
+          >
+                      {index+1}-{item.name}:{item.win + ""}-{item.lose + ""}
+                      </Row>})
           : null}
+        {this.state.oneTeamDetail.map((item)=>{
+         return <Row key={item.id}>{JSON.stringify(item)}</Row>
+        })}
 
 
       </div>);

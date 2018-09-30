@@ -30,6 +30,13 @@ export function getTeamRank(matchId,boType){
   });
 }
 
+/*根据赛事id 和赛事阶段 和战队id 返回game_detail的数据*/
+export function getOneTeamGameDetail(matchId,boType,teamId){
+  return request(`${basicRoute}/index.php?m=Home&c=BasicAnalyze&a=getOneTeamGameDetail&matchId=${matchId}&boType=${boType}&teamId=${teamId}`,{
+    method: 'get',
+  });
+}
+
 export function getGameListNoDetail(matchId,boType,page){
   return request(`${basicRoute}/index.php?m=Home&c=Index&a=getGameListNoDetail&matchId=${matchId}&boType=${boType}&page=${page}`,{
     method: 'get',
