@@ -29,7 +29,7 @@ export default class IndexComponent  extends React.Component {
         defaultOpenKeys={['sub1']}
         mode="inline"
         theme="dark"
-        style={{ height: "100%", width: "240px" }}
+        style={{ height: "100%" }}
       >
         <SubMenu key="sub1"
                  title={<span><Icon type="mail" /><span>数据录入</span></span>}
