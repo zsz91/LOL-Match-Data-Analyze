@@ -23,7 +23,8 @@ export default class InputData  extends React.Component {
       matchList:[],  //赛事列表 所有比赛
       matchId: "1", // 赛事id
       boList: [], // 赛事阶段列表.
-      teamList: [],
+      teamList: [], //赛事战队列表
+      nameList:[], // 战队id=>name 映射
       processList: [], //赛事进程 process_list表所有数据
       boType: "1",
     };
@@ -36,8 +37,13 @@ export default class InputData  extends React.Component {
   };
   getTeamListOfOneMatch = () => {
     service.teamListOfOneMatch(this.state.matchId).then((res)=>{
+      let nameList = [];
+      for(let item of res.data){
+        nameList[item.id] = item.name;
+      }
       this.setState({
         teamList: res.data,
+        nameList : nameList,
         boList: res.other.match_type,
         processList: res.other.process_list,
         boType: res.other.match_type[0].id,

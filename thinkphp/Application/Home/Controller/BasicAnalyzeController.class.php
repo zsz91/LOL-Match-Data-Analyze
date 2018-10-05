@@ -34,11 +34,39 @@ class BasicAnalyzeController extends BasicController{
             $res[$value['win']]['win']++;
             $res[$value['lose']]['lose']++;
         }
-        
-        $this->returnRes($res);   
+        $trend = $this->OneTypeTrend($_GET['boType']);
+        $this->returnRes($res,$trend);   
     }
-
-
+    
+    private function OneTypeTrend($type){
+      $M = new \Think\Model();
+      $M = M('game_detail');
+      $game_id = M('game_list')->where(array('type'=>$type))->getField('id',true);
+      $where['game_id'] = array('IN',$game_id);
+      $detailData = $M->where($where)->field('id,long_time,blue_win,five_kill_win,fb_win')->order('game_id')->select();
+      $count = count($detailData);
+      $where['blue_win'] = 1;
+      $res = array(
+        'blue_win'=>0,
+        'long_time'=>0,
+        'five_kill_win'=>0,
+        'fb_win'=>0,
+      );
+      foreach ($detailData as $key => $value) {
+        foreach ($res as $key2 => &$value2) {
+            $value2 = intval($value[$key2]) === 1 ? ++$value2 : $value2;
+        }
+      }
+      foreach ($res as $key => &$value) {
+        $value = round($value/$count*100,2)."%";
+      }
+      unset($value);
+      return array(
+        'trend'=>$detailData,
+        'percent'=>$res,
+      );
+    }
+   
     /*根据一个或多个赛事id 返回这些赛事的一系列数据*/
     /**
       matchId 赛事id 

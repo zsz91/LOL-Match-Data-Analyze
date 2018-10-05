@@ -101,7 +101,7 @@ class IndexController extends BasicController{
     	$input = file_get_contents('php://input');
 		$input = json_decode($input,true);
 		$M = M('game_detail');
-        $input['long_time'] = strtotime($input['use_time']) >= strtotime("33:00:00") ? 1 : 0;
+        $input['long_time'] = strtotime($input['use_time']) >= strtotime("00:33:00") ? 1 : 0;
 		$check = $M->where(array('game_id'=> $input['game_id'], 'number'=> $input['number']))->getField('id');
 		if($check){
 			$this->returnRes('不能重复添加','',400);
