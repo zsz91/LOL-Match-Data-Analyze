@@ -27,13 +27,11 @@ export default class DetailInput  extends React.Component {
         first_blood: 1, // 一血方
         number: 1, // 第几场比赛
         five_kill: 1, // 首先达到5次击杀的队伍
-        ten_kill: 1,   // 首先达到10次击杀的队伍
         use_hour: '00',
         use_time: '35:00', // 游戏时长 单位秒
     // red : 1,        // 红色方
     // five_kill_win: 1,  // 首先达到5次击杀的队伍 并获胜
     // fb_win: 1,  // 拿到1血的队伍是否获胜
-    // ten_kill_win:
     // blue_win: 1,  // 是否是蓝色方获胜
   },
     };
@@ -85,7 +83,6 @@ export default class DetailInput  extends React.Component {
         first_blood: item.win, // 一血方
         number: 1, // 第几场比赛
         five_kill: item.win, // 首先达到5次击杀的队伍
-        ten_kill: item.win,   // 首先达到10次击杀的队伍
         use_hour: '00',
         use_time: '35:00',// 游戏时长 单位秒
     };
@@ -118,7 +115,6 @@ export default class DetailInput  extends React.Component {
     let winId = parseInt(process, 10) === 1 ? this.state.chooseGame.win : this.state.chooseGame.lose;
     data.five_kill_win = winId === data.five_kill ? 1 : 0;
     data.fb_win = winId === data.first_blood ? 1 : 0;
-    data.ten_kill_win = winId === data.ten_kill ? 1 : 0;
     data.blue_win = winId === data.blue ? 1 : 0;
     data.use_time = data.use_hour + ":" + data.use_time;
     this.props.service.postDetailData(data).then((res)=>{
@@ -219,16 +215,6 @@ export default class DetailInput  extends React.Component {
           optionName: 'name',
           type: 'Select',
           keyName: 'five_kill',
-        },
-        {
-          label: '首先达到10次击杀',
-          handleChange: this.dataChange,
-          value: this.state.data.ten_kill,
-          options: colorOption,
-          optionKey: 'id',
-          optionName: 'name',
-          type: 'Select',
-          keyName: 'ten_kill',
         },
         {
           label: '比赛用时小时',

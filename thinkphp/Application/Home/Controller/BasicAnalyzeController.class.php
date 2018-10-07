@@ -34,11 +34,39 @@ class BasicAnalyzeController extends BasicController{
             $res[$value['win']]['win']++;
             $res[$value['lose']]['lose']++;
         }
-        
-        $this->returnRes($res);   
+        $trend = $this->OneTypeTrend($_GET['boType']);
+        $this->returnRes($res,$trend);   
     }
-
-
+    
+    private function OneTypeTrend($type){
+      $M = new \Think\Model();
+      $M = M('game_detail');
+      $game_id = M('game_list')->where(array('type'=>$type))->getField('id',true);
+      $where['game_id'] = array('IN',$game_id);
+      $detailData = $M->where($where)->field('id,long_time,blue_win,five_kill_win,fb_win')->order('game_id')->select();
+      $count = count($detailData);
+      $where['blue_win'] = 1;
+      $res = array(
+        'blue_win'=>0,
+        'long_time'=>0,
+        'five_kill_win'=>0,
+        'fb_win'=>0,
+      );
+      foreach ($detailData as $key => $value) {
+        foreach ($res as $key2 => &$value2) {
+            $value2 = intval($value[$key2]) === 1 ? ++$value2 : $value2;
+        }
+      }
+      foreach ($res as $key => &$value) {
+        $value = round($value/$count*100,2)."%";
+      }
+      unset($value);
+      return array(
+        'trend'=>$detailData,
+        'percent'=>$res,
+      );
+    }
+   
     /*根据一个或多个赛事id 返回这些赛事的一系列数据*/
     /**
       matchId 赛事id 
@@ -51,8 +79,27 @@ class BasicAnalyzeController extends BasicController{
         $res['占比'] = $this->totalScore($matchId);
         $res['走势'] = $this->someContinue($matchId);
         $this->debug($res);
+    }
+    /**
+        根据一项赛事,赛事阶段,战队id 返回该战队的每一小局比赛的详细数据
+    **/
+    public function getOneTeamGameDetail(){
+         $where_main['match'] = $_GET['matchId'];
+         $where_main['type'] = $_GET['boType'];
+         $where_main['_complex'] = array(
+            array('win'=>$_GET['teamId']),
+            array('lose'=>$_GET['teamId']),
+            '_logic' => 'or',
+         );
+         $game_list = M('game_list')->where($where_main)->getField('id',true);
+         $where['game_id'] = array('in',$game_list);
+         $data = M('game_detail')->where($where)->order('game_id')->select();
+         $this->returnRes($data);
 
     }
+
+
+
     /*根据一个赛事id  
       返回该赛事按type分组的大小局统计
       用于下注 最终比分的和是 大于2.5 ? 还是小于2.5 这种类型
@@ -77,6 +124,8 @@ class BasicAnalyzeController extends BasicController{
         }
         return $res;
     }
+
+
     /**
     *根据一个赛事的id
     *返回该赛事 BO3 totalScore 的连续性. 2-0 2-1 连续了多少场
@@ -102,10 +151,6 @@ class BasicAnalyzeController extends BasicController{
           
         }
         return $res;
-        /*print_r(substr_count($res,'1010')); 5个0
-        print_r(substr_count($res,'10101'));
-        print_r(substr_count($res,'10100'));
-        die;*/
 
     }
     

@@ -15,6 +15,8 @@ export default class BasicAnalyze  extends React.Component {
     super(props);
     this.state={
       teamList: [],
+      oneTeamDetail:[],
+      typeTrend:null,
     };
   }
 
@@ -42,7 +44,9 @@ export default class BasicAnalyze  extends React.Component {
     this.props.service.getTeamRank(this.props.matchId, this.props.boType).then((res)=>{
         let teamList = this.props.teamList;
         let data = res.data;
+
         let length = teamList.length;
+        /*排序*/
         for(let i = 0; i < length; i++){
           let item = teamList[i];
           if(typeof data[item['id']] !== 'undefined'){
@@ -50,7 +54,7 @@ export default class BasicAnalyze  extends React.Component {
             item['lose'] = data[item['id']]['lose'] || 0;
           }else{
             item['win'] = -1;
-            item['lose'] = -1
+            item['lose'] = -1;
           }
         }
         teamList.sort(function(a,b){
@@ -62,11 +66,27 @@ export default class BasicAnalyze  extends React.Component {
             return 1;
           }
         });
-        console.log(teamList);
-        this.stateChange('teamList',teamList);
+      this.stateChange('teamList',teamList);
+      this.stateChange('typeTrend',res.other);
     });
   };
+  getOneTeamGameDetail = (item) => {
+    this.props.service.getOneTeamGameDetail(this.props.matchId, this.props.boType, item.id).then((res)=>{
+      for(let data of res.data){
+       let names =  this.giveName(['blue', 'red', 'first_blood', 'five_kill'], data);
+       Object.assign(data,data,names);
+      }
+      this.stateChange('oneTeamDetail',res.data);
+    })
+  };
 
+  giveName = (keys = [],data) =>{
+    let res = {};
+    for(let item of keys){
+      res[item] = this.props.nameList[data[item]];
+    }
+    return res;
+  };
 
   render() {
     return (
@@ -80,8 +100,21 @@ export default class BasicAnalyze  extends React.Component {
             if((item.lose <= 0 && item.win <=0) || typeof item.win === 'undefined'){
               return null;
             }
-          return <Row key={item.id}>{index+1}-{item.name}:{item.win + ""}-{item.lose + ""}</Row>})
+          return <Row key={item.id}
+                      onClick ={()=>{this.getOneTeamGameDetail(item)}}
+          >
+                      {index+1}-{item.name}:{item.win + ""}-{item.lose + ""}
+                      </Row>})
           : null}
+        {this.state.oneTeamDetail.map((item)=>{
+         return <Row key={item.id}>{JSON.stringify(item)}</Row>
+        })}
+        {!!this.state.typeTrend && this.state.typeTrend.percent ?
+          <Row key={this.props.boType}>
+            {JSON.stringify(this.state.typeTrend.percent)}
+          </Row> : null}
+        {!!this.state.typeTrend && this.state.typeTrend.trend ? this.state.typeTrend.trend.map(
+          (item)=>{ return <Row key={item.id}>{JSON.stringify(item)}</Row>}) : null}
 
 
       </div>);
