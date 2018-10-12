@@ -68,3 +68,38 @@ export function postDetailData(data){
   });
 }
 
+export function submitMatchList(data){
+  return request(`${basicRoute}/index.php?m=Home&c=AddMatch&a=addMatch`, {
+    method: 'post',
+    body: JSON.stringify(data),
+    headers: {
+      'Content-Type': 'application/json;charset=UTF-8'
+    },
+  });
+}
+
+export function submitMatchType(data){
+  return request(`${basicRoute}/index.php?m=Home&c=AddMatch&a=addMatchType`, {
+    method: 'post',
+    body: JSON.stringify(data),
+    headers: {
+      'Content-Type': 'application/json;charset=UTF-8'
+    },
+  });
+}
+
+export function submitAreaList(data){
+  return request(`${basicRoute}/index.php?m=Home&c=AddMatch&a=addAreaList`, {
+    method: 'post',
+    body: JSON.stringify(data),
+    headers: {
+      'Content-Type': 'application/json;charset=UTF-8'
+    },
+  });
+}
+
+export function getMatchBasicData(matchId){
+  return request(`${basicRoute}/index.php?m=Home&c=AddMatch&a=getMatchBasicData&matchId=${matchId}`,{
+    method: 'get',
+  });
+}

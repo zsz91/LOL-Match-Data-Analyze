@@ -9,6 +9,7 @@ import IndexComponent from "./IndexComponent";
 import BasicInput from './BasicInput';
 import DetailInput from './DetailInput';
 import BasicAnalyze from './BasicAnalyze';
+import AddMatch from './AddMatch';
 import * as service from '../services/basicApi';
 import FormItemDiy from "../../public/components/FormItemDiy";
 
@@ -59,11 +60,16 @@ export default class InputData  extends React.Component {
 
   };
   componentDidMount() {
+    this.getMatchList();
+  };
+
+  getMatchList = () => {
     service.matchList().then((res)=>{
         this.stateChange('matchList', res.data);
       }
     );
   };
+
 
   shouldComponentUpdate(nextProps,nextState){
     return true;
@@ -72,20 +78,7 @@ export default class InputData  extends React.Component {
   render() {
 
     let Content;
-    switch(this.props.location.pathname){
-      case '/basicInput':
-        Content = <BasicInput {...this.state} service={service}/>;
-        break;
-      case '/detailInput':
-        Content = <DetailInput {...this.state} service={service}/>;
-        break;
-      case '/basicAnalyze':
-        Content = <BasicAnalyze {...this.state} service={service}/>;
-        break;
-      default:
-        break;
-    }
-    let config = [
+    const config = [
       {
         label: '选择赛事',
         handleChange: this.handleMatchIdChange,
@@ -107,17 +100,48 @@ export default class InputData  extends React.Component {
         keyName: 'boType',
       },
     ];
+    const matchListDom =<Form layout="inline">
+      {config.map((item,index)=>{
+        return <FormItemDiy  key={item.keyName} {...item}/>
+      })}
+    </Form>;
+    switch(this.props.location.pathname){
+      case '/basicInput':
+        Content =
+          <div>
+              {matchListDom}
+              <BasicInput {...this.state} service={service}/>
+          </div>;
+        break;
+      case '/detailInput':
+        Content =
+          <div>
+             {matchListDom}
+              <DetailInput {...this.state} service={service}/>
+          </div>;
+        break;
+      case '/basicAnalyze':
+        Content =
+          <div>
+              {matchListDom}
+              <BasicAnalyze {...this.state} service={service}/>
+          </div>;
+        break;
+      case '/addMatch':
+        Content = <AddMatch {...this.state} service={service}/>;
+        break;
+      default:
+        break;
+    }
+
     return (
       <Row style={{ height: '100%',overflowY: "scroll"}}>
+
         <Col span={4} style={{ height: '100%' }}>
           <IndexComponent route={this.props.location.pathname} />
         </Col>
+
         <Col span={20} style={{height:'100%', overflowY: "scroll"}}>
-          <Form layout="inline">
-            {config.map((item,index)=>{
-              return <FormItemDiy  key={item.keyName} {...item}/>
-            })}
-          </Form>
           {this.state.matchList.length ? Content : null}
         </Col>
       </Row>);

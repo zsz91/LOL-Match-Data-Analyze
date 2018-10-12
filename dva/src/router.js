@@ -8,6 +8,7 @@ function RouterConfig({ history }) {
     <Router history={history}>
     <Switch>
     <Route path="/basicInput" component={InputData} />
+      <Route path="/addMatch" component={InputData} />
       <Route path="/detailInput" component={InputData} />
       <Route path="/basicAnalyze" component={InputData} />
       <Redirect to="/basicInput" />

@@ -32,21 +32,37 @@ export default class IndexComponent  extends React.Component {
         style={{ height: "100%" }}
       >
         <SubMenu key="sub1"
-                 title={<span><Icon type="mail" /><span>数据录入</span></span>}
+                 title={
+                   <span>
+                     <Icon type="mail" />
+                   <span>
+                     数据录入
+                   </span>
+                 </span>}
         >
           <Menu.Item key="/basicInput">
             <Link to="/basicInput">
-              基本
+              录入基本
             </Link>
           </Menu.Item>
           <Menu.Item key="/detailInput">
             <Link to="/detailInput">
-              详情
+              录入详情
+            </Link>
+          </Menu.Item>
+          <Menu.Item key="/addMatch">
+            <Link to="/addMatch">
+              编辑赛事
             </Link>
           </Menu.Item>
         </SubMenu>
         <SubMenu key="sub2"
-                 title={<span><Icon type="mail" /><span>数据查询</span></span>}
+                 title={<span>
+                   <Icon type="mail" />
+                   <span>
+                     数据查询
+                   </span>
+                 </span>}
         >
           <Menu.Item key="/basicAnalyze">
             <Link to="/basicAnalyze">
