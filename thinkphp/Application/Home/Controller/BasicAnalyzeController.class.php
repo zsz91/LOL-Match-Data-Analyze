@@ -43,7 +43,7 @@ class BasicAnalyzeController extends BasicController{
       $M = M('game_detail');
       $game_id = M('game_list')->where(array('type'=>$type))->getField('id',true);
       $where['game_id'] = array('IN',$game_id);
-      $detailData = $M->where($where)->field('id,long_time,blue_win,five_kill_win,fb_win')->order('game_id')->select();
+      $detailData = $M->where($where)->field('id,long_time,blue_win,five_kill_win,fb_win')->order('game_id,number')->select();
       $count = count($detailData);
       $where['blue_win'] = 1;
       $res = array(
